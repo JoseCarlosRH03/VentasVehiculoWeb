@@ -1,0 +1,1286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VentasVehiculoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsientosVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CantidadAsiento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id_Usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CombustibleVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleOrden">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="TotalDetalle" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Id_Orden" Type="int" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleados">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Genero" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Jefe" Type="int" Nullable="false" />
+          <Property Name="Id_Usuario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoOrden">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FacturasOrdenes">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="Id_Empleado" />
+            <PropertyRef Name="Id_Orden" />
+            <PropertyRef Name="TipoPago" />
+            <PropertyRef Name="Cambio" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" Nullable="false" />
+          <Property Name="Id_Orden" Type="int" Nullable="false" />
+          <Property Name="TipoPago" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cambio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ImagenVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RutaImagen" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InvetarioVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marcas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Marca" Type="int" Nullable="false" />
+          <Property Name="Id_Traccion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orden">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" Nullable="false" />
+          <Property Name="Id_TipoOrden" Type="int" Nullable="false" />
+          <Property Name="Id_EstadoOrden" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="SubTotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Itbis" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Suplidores">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEmpresa" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TraccionVehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Traccion" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PasswordUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Kilometraje" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Año" Type="date" Nullable="false" />
+          <Property Name="Id_Combustible" Type="int" Nullable="false" />
+          <Property Name="Id_TipoVehiculo" Type="int" Nullable="false" />
+          <Property Name="Id_Asiento" Type="int" Nullable="false" />
+          <Property Name="Id_Estado" Type="int" Nullable="false" />
+          <Property Name="Id_Modelo" Type="int" Nullable="false" />
+          <Property Name="Id_Suplidor" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="cliente_fk">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Empleado_fk">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="FacturasOrdenes" Type="Self.FacturasOrdenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FacturasOrdenes">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Asiento">
+          <End Role="AsientosVehiculos" Type="Self.AsientosVehiculos" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsientosVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Combustible">
+          <End Role="CombustibleVehiculos" Type="Self.CombustibleVehiculos" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CombustibleVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Combustible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estado">
+          <End Role="EstadoVehiculos" Type="Self.EstadoVehiculos" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadoOrden">
+          <End Role="EstadoOrden" Type="Self.EstadoOrden" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoOrden">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="Id_EstadoOrden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Jefe">
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+          <End Role="Empleados1" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleados1">
+              <PropertyRef Name="Jefe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Marca">
+          <End Role="Marcas" Type="Self.Marcas" Multiplicity="1" />
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Modelos">
+              <PropertyRef Name="Id_Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Orden">
+          <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+          <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orden">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DetalleOrden">
+              <PropertyRef Name="Id_Orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrdenFactura">
+          <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+          <End Role="FacturasOrdenes" Type="Self.FacturasOrdenes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orden">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FacturasOrdenes">
+              <PropertyRef Name="Id_Orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Suplidor">
+          <End Role="Suplidores" Type="Self.Suplidores" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suplidores">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Suplidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipoVehiculo">
+          <End Role="TipoVehiculos" Type="Self.TipoVehiculos" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_TipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_traccion">
+          <End Role="TraccionVehiculos" Type="Self.TraccionVehiculos" Multiplicity="1" />
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TraccionVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Modelos">
+              <PropertyRef Name="Id_Traccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vehiculo">
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="1" />
+          <End Role="InvetarioVehiculo" Type="Self.InvetarioVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvetarioVehiculo">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Vehiculos">
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="1" />
+          <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DetalleOrden">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VehicuModelo">
+          <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Modelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuario_fk">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Vehiculo_fk">
+          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="1" />
+          <End Role="ImagenVehiculos" Type="Self.ImagenVehiculos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImagenVehiculos">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VentasVehiculoDBModelStoreContainer">
+          <EntitySet Name="AsientosVehiculos" EntityType="Self.AsientosVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CombustibleVehiculos" EntityType="Self.CombustibleVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleOrden" EntityType="Self.DetalleOrden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoOrden" EntityType="Self.EstadoOrden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoVehiculos" EntityType="Self.EstadoVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImagenVehiculos" EntityType="Self.ImagenVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvetarioVehiculo" EntityType="Self.InvetarioVehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelos" EntityType="Self.Modelos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orden" EntityType="Self.Orden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suplidores" EntityType="Self.Suplidores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoVehiculos" EntityType="Self.TipoVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TraccionVehiculos" EntityType="Self.TraccionVehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculos" EntityType="Self.Vehiculos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FacturasOrdenes" EntityType="Self.FacturasOrdenes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FacturasOrdenes].[ID] AS [ID], 
+    [FacturasOrdenes].[Fecha] AS [Fecha], 
+    [FacturasOrdenes].[Id_Empleado] AS [Id_Empleado], 
+    [FacturasOrdenes].[Id_Orden] AS [Id_Orden], 
+    [FacturasOrdenes].[TipoPago] AS [TipoPago], 
+    [FacturasOrdenes].[Cambio] AS [Cambio]
+    FROM [dbo].[FacturasOrdenes] AS [FacturasOrdenes]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="cliente_fk" Association="Self.cliente_fk">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Orden" EntitySet="Orden" />
+          </AssociationSet>
+          <AssociationSet Name="Empleado_fk" Association="Self.Empleado_fk">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="FacturasOrdenes" EntitySet="FacturasOrdenes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Asiento" Association="Self.fk_Asiento">
+            <End Role="AsientosVehiculos" EntitySet="AsientosVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Combustible" Association="Self.fk_Combustible">
+            <End Role="CombustibleVehiculos" EntitySet="CombustibleVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estado" Association="Self.fk_Estado">
+            <End Role="EstadoVehiculos" EntitySet="EstadoVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadoOrden" Association="Self.fk_estadoOrden">
+            <End Role="EstadoOrden" EntitySet="EstadoOrden" />
+            <End Role="Orden" EntitySet="Orden" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Jefe" Association="Self.fk_Jefe">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleados1" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Marca" Association="Self.fk_Marca">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modelos" EntitySet="Modelos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Orden" Association="Self.fk_Orden">
+            <End Role="Orden" EntitySet="Orden" />
+            <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrdenFactura" Association="Self.fk_OrdenFactura">
+            <End Role="Orden" EntitySet="Orden" />
+            <End Role="FacturasOrdenes" EntitySet="FacturasOrdenes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Suplidor" Association="Self.fk_Suplidor">
+            <End Role="Suplidores" EntitySet="Suplidores" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipoVehiculo" Association="Self.fk_tipoVehiculo">
+            <End Role="TipoVehiculos" EntitySet="TipoVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_traccion" Association="Self.fk_traccion">
+            <End Role="TraccionVehiculos" EntitySet="TraccionVehiculos" />
+            <End Role="Modelos" EntitySet="Modelos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario" Association="Self.fk_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vehiculo" Association="Self.fk_vehiculo">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="InvetarioVehiculo" EntitySet="InvetarioVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Vehiculos" Association="Self.fk_Vehiculos">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="DetalleOrden" EntitySet="DetalleOrden" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VehicuModelo" Association="Self.fk_VehicuModelo">
+            <End Role="Modelos" EntitySet="Modelos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="Usuario_fk" Association="Self.Usuario_fk">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="Vehiculo_fk" Association="Self.Vehiculo_fk">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="ImagenVehiculos" EntitySet="ImagenVehiculos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VentasVehiculoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AsientosVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CantidadAsiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.fk_Asiento" FromRole="AsientosVehiculos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ordens" Relationship="Self.cliente_fk" FromRole="Clientes" ToRole="Orden" />
+          <NavigationProperty Name="Usuario" Relationship="Self.Usuario_fk" FromRole="Clientes" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="CombustibleVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.fk_Combustible" FromRole="CombustibleVehiculos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="DetalleOrden">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="TotalDetalle" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Id_Orden" Type="Int32" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orden" Relationship="Self.fk_Orden" FromRole="DetalleOrden" ToRole="Orden" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.fk_Vehiculos" FromRole="DetalleOrden" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Genero" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Jefe" Type="Int32" Nullable="false" />
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FacturasOrdenes" Relationship="Self.Empleado_fk" FromRole="Empleados" ToRole="FacturasOrdenes" />
+          <NavigationProperty Name="Empleados1" Relationship="Self.fk_Jefe" FromRole="Empleados" ToRole="Empleados1" />
+          <NavigationProperty Name="Empleado1" Relationship="Self.fk_Jefe" FromRole="Empleados1" ToRole="Empleados" />
+          <NavigationProperty Name="Usuario" Relationship="Self.fk_Usuario" FromRole="Empleados" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="EstadoOrden">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Ordens" Relationship="Self.fk_estadoOrden" FromRole="EstadoOrden" ToRole="Orden" />
+        </EntityType>
+        <EntityType Name="EstadoVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.fk_Estado" FromRole="EstadoVehiculos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="ImagenVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RutaImagen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.Vehiculo_fk" FromRole="ImagenVehiculos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="InvetarioVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.fk_vehiculo" FromRole="InvetarioVehiculo" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Modelos" Relationship="Self.fk_Marca" FromRole="Marcas" ToRole="Modelos" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Marca" Type="Int32" Nullable="false" />
+          <Property Name="Id_Traccion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Marca" Relationship="Self.fk_Marca" FromRole="Modelos" ToRole="Marcas" />
+          <NavigationProperty Name="TraccionVehiculo" Relationship="Self.fk_traccion" FromRole="Modelos" ToRole="TraccionVehiculos" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.fk_VehicuModelo" FromRole="Modelos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="Orden">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Id_TipoOrden" Type="Int32" Nullable="false" />
+          <Property Name="Id_EstadoOrden" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Itbis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.cliente_fk" FromRole="Orden" ToRole="Clientes" />
+          <NavigationProperty Name="DetalleOrdens" Relationship="Self.fk_Orden" FromRole="Orden" ToRole="DetalleOrden" />
+          <NavigationProperty Name="EstadoOrden" Relationship="Self.fk_estadoOrden" FromRole="Orden" ToRole="EstadoOrden" />
+          <NavigationProperty Name="FacturasOrdenes" Relationship="Self.fk_OrdenFactura" FromRole="Orden" ToRole="FacturasOrdenes" />
+        </EntityType>
+        <EntityType Name="Suplidore">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEmpresa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.fk_Suplidor" FromRole="Suplidores" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="TipoVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehiculos" Relationship="Self.fk_tipoVehiculo" FromRole="TipoVehiculos" ToRole="Vehiculos" />
+        </EntityType>
+        <EntityType Name="TraccionVehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Traccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Modelos" Relationship="Self.fk_traccion" FromRole="TraccionVehiculos" ToRole="Modelos" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.Usuario_fk" FromRole="Usuarios" ToRole="Clientes" />
+          <NavigationProperty Name="Empleados" Relationship="Self.fk_Usuario" FromRole="Usuarios" ToRole="Empleados" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Kilometraje" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Año" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Combustible" Type="Int32" Nullable="false" />
+          <Property Name="Id_TipoVehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Asiento" Type="Int32" Nullable="false" />
+          <Property Name="Id_Estado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Modelo" Type="Int32" Nullable="false" />
+          <Property Name="Id_Suplidor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AsientosVehiculo" Relationship="Self.fk_Asiento" FromRole="Vehiculos" ToRole="AsientosVehiculos" />
+          <NavigationProperty Name="CombustibleVehiculo" Relationship="Self.fk_Combustible" FromRole="Vehiculos" ToRole="CombustibleVehiculos" />
+          <NavigationProperty Name="DetalleOrdens" Relationship="Self.fk_Vehiculos" FromRole="Vehiculos" ToRole="DetalleOrden" />
+          <NavigationProperty Name="EstadoVehiculo" Relationship="Self.fk_Estado" FromRole="Vehiculos" ToRole="EstadoVehiculos" />
+          <NavigationProperty Name="ImagenVehiculos" Relationship="Self.Vehiculo_fk" FromRole="Vehiculos" ToRole="ImagenVehiculos" />
+          <NavigationProperty Name="InvetarioVehiculoes" Relationship="Self.fk_vehiculo" FromRole="Vehiculos" ToRole="InvetarioVehiculo" />
+          <NavigationProperty Name="Modelo" Relationship="Self.fk_VehicuModelo" FromRole="Vehiculos" ToRole="Modelos" />
+          <NavigationProperty Name="Suplidore" Relationship="Self.fk_Suplidor" FromRole="Vehiculos" ToRole="Suplidores" />
+          <NavigationProperty Name="TipoVehiculo" Relationship="Self.fk_tipoVehiculo" FromRole="Vehiculos" ToRole="TipoVehiculos" />
+        </EntityType>
+        <EntityType Name="FacturasOrdene">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Fecha" />
+            <PropertyRef Name="Id_Empleado" />
+            <PropertyRef Name="Id_Orden" />
+            <PropertyRef Name="TipoPago" />
+            <PropertyRef Name="Cambio" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" />
+          <Property Name="Id_Orden" Type="Int32" Nullable="false" />
+          <Property Name="TipoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cambio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="Self.Empleado_fk" FromRole="FacturasOrdenes" ToRole="Empleados" />
+          <NavigationProperty Name="Orden" Relationship="Self.fk_OrdenFactura" FromRole="FacturasOrdenes" ToRole="Orden" />
+        </EntityType>
+        <Association Name="fk_Asiento">
+          <End Role="AsientosVehiculos" Type="Self.AsientosVehiculo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsientosVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cliente_fk">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuario_fk">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Combustible">
+          <End Role="CombustibleVehiculos" Type="Self.CombustibleVehiculo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CombustibleVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Combustible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Orden">
+          <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+          <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orden">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DetalleOrden">
+              <PropertyRef Name="Id_Orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Vehiculos">
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="DetalleOrden" Type="Self.DetalleOrden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DetalleOrden">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Empleado_fk">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="FacturasOrdenes" Type="Self.FacturasOrdene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FacturasOrdenes">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Jefe">
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Empleados1" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleados">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleados1">
+              <PropertyRef Name="Jefe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Usuario">
+          <End Role="Usuarios" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Empleados" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Empleados">
+              <PropertyRef Name="Id_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_estadoOrden">
+          <End Role="EstadoOrden" Type="Self.EstadoOrden" Multiplicity="1" />
+          <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoOrden">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Orden">
+              <PropertyRef Name="Id_EstadoOrden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Estado">
+          <End Role="EstadoVehiculos" Type="Self.EstadoVehiculo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Vehiculo_fk">
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="ImagenVehiculos" Type="Self.ImagenVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ImagenVehiculos">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_vehiculo">
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="InvetarioVehiculo" Type="Self.InvetarioVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="InvetarioVehiculo">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Marca">
+          <End Role="Marcas" Type="Self.Marca" Multiplicity="1" />
+          <End Role="Modelos" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marcas">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Modelos">
+              <PropertyRef Name="Id_Marca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_traccion">
+          <End Role="TraccionVehiculos" Type="Self.TraccionVehiculo" Multiplicity="1" />
+          <End Role="Modelos" Type="Self.Modelo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TraccionVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Modelos">
+              <PropertyRef Name="Id_Traccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_VehicuModelo">
+          <End Role="Modelos" Type="Self.Modelo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Modelo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrdenFactura">
+          <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+          <End Role="FacturasOrdenes" Type="Self.FacturasOrdene" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orden">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FacturasOrdenes">
+              <PropertyRef Name="Id_Orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Suplidor">
+          <End Role="Suplidores" Type="Self.Suplidore" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Suplidores">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_Suplidor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tipoVehiculo">
+          <End Role="TipoVehiculos" Type="Self.TipoVehiculo" Multiplicity="1" />
+          <End Role="Vehiculos" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoVehiculos">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Vehiculos">
+              <PropertyRef Name="Id_TipoVehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VentasVehiculoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AsientosVehiculos" EntityType="Self.AsientosVehiculo" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="CombustibleVehiculos" EntityType="Self.CombustibleVehiculo" />
+          <EntitySet Name="DetalleOrdens" EntityType="Self.DetalleOrden" />
+          <EntitySet Name="Empleados" EntityType="Self.Empleado" />
+          <EntitySet Name="EstadoOrdens" EntityType="Self.EstadoOrden" />
+          <EntitySet Name="EstadoVehiculos" EntityType="Self.EstadoVehiculo" />
+          <EntitySet Name="ImagenVehiculos" EntityType="Self.ImagenVehiculo" />
+          <EntitySet Name="InvetarioVehiculoes" EntityType="Self.InvetarioVehiculo" />
+          <EntitySet Name="Marcas" EntityType="Self.Marca" />
+          <EntitySet Name="Modelos" EntityType="Self.Modelo" />
+          <EntitySet Name="Ordens" EntityType="Self.Orden" />
+          <EntitySet Name="Suplidores" EntityType="Self.Suplidore" />
+          <EntitySet Name="TipoVehiculos" EntityType="Self.TipoVehiculo" />
+          <EntitySet Name="TraccionVehiculos" EntityType="Self.TraccionVehiculo" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Vehiculos" EntityType="Self.Vehiculo" />
+          <EntitySet Name="FacturasOrdenes" EntityType="Self.FacturasOrdene" />
+          <AssociationSet Name="fk_Asiento" Association="Self.fk_Asiento">
+            <End Role="AsientosVehiculos" EntitySet="AsientosVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="cliente_fk" Association="Self.cliente_fk">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Orden" EntitySet="Ordens" />
+          </AssociationSet>
+          <AssociationSet Name="Usuario_fk" Association="Self.Usuario_fk">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Combustible" Association="Self.fk_Combustible">
+            <End Role="CombustibleVehiculos" EntitySet="CombustibleVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Orden" Association="Self.fk_Orden">
+            <End Role="Orden" EntitySet="Ordens" />
+            <End Role="DetalleOrden" EntitySet="DetalleOrdens" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Vehiculos" Association="Self.fk_Vehiculos">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="DetalleOrden" EntitySet="DetalleOrdens" />
+          </AssociationSet>
+          <AssociationSet Name="Empleado_fk" Association="Self.Empleado_fk">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="FacturasOrdenes" EntitySet="FacturasOrdenes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Jefe" Association="Self.fk_Jefe">
+            <End Role="Empleados" EntitySet="Empleados" />
+            <End Role="Empleados1" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Usuario" Association="Self.fk_Usuario">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Empleados" EntitySet="Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="fk_estadoOrden" Association="Self.fk_estadoOrden">
+            <End Role="EstadoOrden" EntitySet="EstadoOrdens" />
+            <End Role="Orden" EntitySet="Ordens" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Estado" Association="Self.fk_Estado">
+            <End Role="EstadoVehiculos" EntitySet="EstadoVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="Vehiculo_fk" Association="Self.Vehiculo_fk">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="ImagenVehiculos" EntitySet="ImagenVehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_vehiculo" Association="Self.fk_vehiculo">
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+            <End Role="InvetarioVehiculo" EntitySet="InvetarioVehiculoes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Marca" Association="Self.fk_Marca">
+            <End Role="Marcas" EntitySet="Marcas" />
+            <End Role="Modelos" EntitySet="Modelos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_traccion" Association="Self.fk_traccion">
+            <End Role="TraccionVehiculos" EntitySet="TraccionVehiculos" />
+            <End Role="Modelos" EntitySet="Modelos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_VehicuModelo" Association="Self.fk_VehicuModelo">
+            <End Role="Modelos" EntitySet="Modelos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrdenFactura" Association="Self.fk_OrdenFactura">
+            <End Role="Orden" EntitySet="Ordens" />
+            <End Role="FacturasOrdenes" EntitySet="FacturasOrdenes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Suplidor" Association="Self.fk_Suplidor">
+            <End Role="Suplidores" EntitySet="Suplidores" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tipoVehiculo" Association="Self.fk_tipoVehiculo">
+            <End Role="TipoVehiculos" EntitySet="TipoVehiculos" />
+            <End Role="Vehiculos" EntitySet="Vehiculos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VentasVehiculoDBModelStoreContainer" CdmEntityContainer="VentasVehiculoDBEntities">
+          <EntitySetMapping Name="AsientosVehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.AsientosVehiculo">
+              <MappingFragment StoreEntitySet="AsientosVehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CantidadAsiento" ColumnName="CantidadAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Cliente">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CombustibleVehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.CombustibleVehiculo">
+              <MappingFragment StoreEntitySet="CombustibleVehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleOrdens">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.DetalleOrden">
+              <MappingFragment StoreEntitySet="DetalleOrden">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="TotalDetalle" ColumnName="TotalDetalle" />
+                <ScalarProperty Name="Id_Orden" ColumnName="Id_Orden" />
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleados">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleados">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Jefe" ColumnName="Jefe" />
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoOrdens">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.EstadoOrden">
+              <MappingFragment StoreEntitySet="EstadoOrden">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoVehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.EstadoVehiculo">
+              <MappingFragment StoreEntitySet="EstadoVehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImagenVehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.ImagenVehiculo">
+              <MappingFragment StoreEntitySet="ImagenVehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvetarioVehiculoes">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.InvetarioVehiculo">
+              <MappingFragment StoreEntitySet="InvetarioVehiculo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Marca">
+              <MappingFragment StoreEntitySet="Marcas">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Modelo">
+              <MappingFragment StoreEntitySet="Modelos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Marca" ColumnName="Id_Marca" />
+                <ScalarProperty Name="Id_Traccion" ColumnName="Id_Traccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ordens">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Orden">
+              <MappingFragment StoreEntitySet="Orden">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_TipoOrden" ColumnName="Id_TipoOrden" />
+                <ScalarProperty Name="Id_EstadoOrden" ColumnName="Id_EstadoOrden" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Itbis" ColumnName="Itbis" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suplidores">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Suplidore">
+              <MappingFragment StoreEntitySet="Suplidores">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NombreEmpresa" ColumnName="NombreEmpresa" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoVehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.TipoVehiculo">
+              <MappingFragment StoreEntitySet="TipoVehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TraccionVehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.TraccionVehiculo">
+              <MappingFragment StoreEntitySet="TraccionVehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Traccion" ColumnName="Traccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="PasswordUsuario" ColumnName="PasswordUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculos">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Kilometraje" ColumnName="Kilometraje" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Año" ColumnName="Año" />
+                <ScalarProperty Name="Id_Combustible" ColumnName="Id_Combustible" />
+                <ScalarProperty Name="Id_TipoVehiculo" ColumnName="Id_TipoVehiculo" />
+                <ScalarProperty Name="Id_Asiento" ColumnName="Id_Asiento" />
+                <ScalarProperty Name="Id_Estado" ColumnName="Id_Estado" />
+                <ScalarProperty Name="Id_Modelo" ColumnName="Id_Modelo" />
+                <ScalarProperty Name="Id_Suplidor" ColumnName="Id_Suplidor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FacturasOrdenes">
+            <EntityTypeMapping TypeName="VentasVehiculoDBModel.FacturasOrdene">
+              <MappingFragment StoreEntitySet="FacturasOrdenes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_Orden" ColumnName="Id_Orden" />
+                <ScalarProperty Name="TipoPago" ColumnName="TipoPago" />
+                <ScalarProperty Name="Cambio" ColumnName="Cambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

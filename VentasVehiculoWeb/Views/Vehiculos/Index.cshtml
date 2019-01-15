@@ -1,0 +1,87 @@
+﻿@model IEnumerable<VentaVehiculoModelDB.Models.Vehiculo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kilometraje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Año)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AsientosVehiculo.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CombustibleVehiculo.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoVehiculo.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Suplidore.NombreEmpresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoVehiculo.Tipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kilometraje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Año)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AsientosVehiculo.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CombustibleVehiculo.Tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoVehiculo.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modelo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Suplidore.NombreEmpresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoVehiculo.Tipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

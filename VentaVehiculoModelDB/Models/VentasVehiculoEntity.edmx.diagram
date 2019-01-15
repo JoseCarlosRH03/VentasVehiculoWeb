@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="408ecdb46fa84ab08acd91aa651b7f20" Name="Diagram1">
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.AsientosVehiculo" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Cliente" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.CombustibleVehiculo" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.DetalleOrden" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Empleado" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.EstadoOrden" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.EstadoVehiculo" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.ImagenVehiculo" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.InvetarioVehiculo" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Marca" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Modelo" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Orden" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Suplidore" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.TipoVehiculo" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.TraccionVehiculo" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Usuario" Width="1.5" PointX="0.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.Vehiculo" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasVehiculoDBModel.FacturasOrdene" Width="1.5" PointX="7.5" PointY="24.625" IsExpanded="true" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Asiento" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.cliente_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.Usuario_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Combustible" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Orden" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Vehiculos" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.Empleado_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Jefe" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_estadoOrden" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.Vehiculo_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_traccion" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_VehicuModelo" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_OrdenFactura" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_Suplidor" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasVehiculoDBModel.fk_tipoVehiculo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

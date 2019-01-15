@@ -1,0 +1,98 @@
+﻿@model VentaVehiculoModelDB.Models.Vehiculo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vehiculo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kilometraje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kilometraje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Año)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Año)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AsientosVehiculo.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AsientosVehiculo.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CombustibleVehiculo.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CombustibleVehiculo.Tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoVehiculo.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoVehiculo.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Suplidore.NombreEmpresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Suplidore.NombreEmpresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoVehiculo.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoVehiculo.Tipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
