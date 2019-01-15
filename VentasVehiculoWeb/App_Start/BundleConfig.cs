@@ -22,9 +22,14 @@ namespace VentasVehiculoWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/MDBoostrap").Include(
+                      "~/MDBoostrap/js/popper.min.js",
+                      "~/MDBoostrap/js/mdb.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap.min.css",
+                      "~/MDBoostrap/css/mdb.css",
+                      "~/MDBoostrap/css/style.css"));
         }
     }
 }
