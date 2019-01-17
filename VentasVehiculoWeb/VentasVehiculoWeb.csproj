@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsientosVehiculosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\CombustibleVehiculosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiculosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -327,6 +328,11 @@
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\CombustibleVehiculos\Create.cshtml" />
+    <Content Include="Views\CombustibleVehiculos\Delete.cshtml" />
+    <Content Include="Views\CombustibleVehiculos\Details.cshtml" />
+    <Content Include="Views\CombustibleVehiculos\Edit.cshtml" />
+    <Content Include="Views\CombustibleVehiculos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
