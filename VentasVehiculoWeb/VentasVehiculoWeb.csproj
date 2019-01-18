@@ -129,6 +129,7 @@
     <Compile Include="Controllers\AsientosVehiculosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\CombustibleVehiculosController.cs" />
+    <Compile Include="Controllers\EmpleadoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiculosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -333,6 +334,11 @@
     <Content Include="Views\CombustibleVehiculos\Details.cshtml" />
     <Content Include="Views\CombustibleVehiculos\Edit.cshtml" />
     <Content Include="Views\CombustibleVehiculos\Index.cshtml" />
+    <Content Include="Views\Empleadoes\Create.cshtml" />
+    <Content Include="Views\Empleadoes\Delete.cshtml" />
+    <Content Include="Views\Empleadoes\Details.cshtml" />
+    <Content Include="Views\Empleadoes\Edit.cshtml" />
+    <Content Include="Views\Empleadoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
