@@ -137,6 +137,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagenVehiculosController.cs" />
     <Compile Include="Controllers\InvetarioVehiculosController.cs" />
+    <Compile Include="Controllers\MantenimientoTablasVehiculoController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\ModeloesController.cs" />
     <Compile Include="Controllers\OrdensController.cs" />
@@ -163,6 +164,7 @@
     <Content Include="MDBootstrap\css\addons\datatables.min.css" />
     <Content Include="MDBootstrap\css\bootstrap.css" />
     <Content Include="MDBootstrap\css\bootstrap.min.css" />
+    <Content Include="MDBootstrap\css\cssProyect\NavBar.css" />
     <Content Include="MDBootstrap\css\mdb.css" />
     <Content Include="MDBootstrap\css\mdb.lite.css" />
     <Content Include="MDBootstrap\css\mdb.lite.min.css" />
@@ -307,7 +309,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -416,6 +420,8 @@
     <Content Include="Views\TipoVehiculoes\Details.cshtml" />
     <Content Include="Views\TipoVehiculoes\Edit.cshtml" />
     <Content Include="Views\TipoVehiculoes\Index.cshtml" />
+    <Content Include="Views\MantenimientoTablasVehiculo\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout2SinCarousel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

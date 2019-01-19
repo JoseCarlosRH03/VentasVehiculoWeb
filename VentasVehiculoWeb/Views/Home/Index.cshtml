@@ -1,12 +1,35 @@
-﻿@{
+﻿@model  VentaVehiculoModelDB.Models.Vehiculo
+@{
     ViewBag.Title = "Home Page";
 }
-<div style="height: 100vh">
-    <div class="flex-center flex-column">
 
-        <h1 class="text-hide animated fadeIn mb-4" style="background-image: url('https://mdbootstrap.com/img/logo/mdb-transparent-250px.png'); width: 250px; height: 90px;">MDBootstrap</h1>
-        <h5 class="animated fadeIn mb-3">Thank you for using our product. We're glad you're with us.</h5>
+<div style="height: 20vh" id="buscador">
+  
+    <form class="row flex-center elegant-color rounded mb-2 position-relative z-depth-4" id="filtro" >
+        <h4 class="colorH4" style="color:white;">Buscador</h4>
+        <hr class="col-11 danger-color linea"/>
+        <div class="form-group col-md-2 ">
+            <select class="browser-default custom-select">
+                <option value="" disabled selected>Marca</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2 ">
+            <select class="browser-default custom-select" disabled id="quitar2">
+                <option value="" disabled selected>Modelo</option>
+            </select>
+        </div>
+        <div class="form-group col-md-2 ">
 
-        <p class="animated fadeIn text-muted">MDB Team</p>
-    </div>
+            <select class="browser-default custom-select">
+                <option value="" disabled selected>Tipo de vehiculo</option>
+            </select>
+        </div>
+        <div class="col-2 offset-1 boton" >
+            <button type="button" class="btn btn-danger">Buscar</button>
+        </div>
+
+    </form>
+
+
+
 </div>

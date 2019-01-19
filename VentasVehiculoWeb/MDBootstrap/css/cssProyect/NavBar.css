@@ -1,0 +1,39 @@
+﻿
+
+.top-nav-collapse {
+    background-color: #2E2E2E;
+}
+
+.br {
+    display: none;
+}
+
+@media only screen and (max-width: 916px) {
+    .navbar {
+        background-color: #4285F4;
+    }
+
+.br {
+        display: block;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+header {
+    height: 20%;
+}
+
+#buscador{
+    margin-top:-60px;
+}
+h4{
+    margin-bottom:-20px;
+}
+.boton {
+    margin-top: -15px;
+}
+
