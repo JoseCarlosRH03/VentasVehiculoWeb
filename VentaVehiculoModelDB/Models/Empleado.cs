@@ -32,7 +32,7 @@ namespace VentaVehiculoModelDB.Models
 		public string Apellido { get; set; }
 
 		[Required(ErrorMessage = "El Cedula es obligatorio")]
-		[RegularExpression("[^[1-9][0-9]*$]", ErrorMessage = "Ingrese una Cedula Valida")]
+		//[RegularExpression("[^[1-9][0-9]*$]", ErrorMessage = "Ingrese una Cedula Valida")]
 		public string Cedula { get; set; }
 
 		[Required(ErrorMessage = "La Fecha es obligatorio")]
@@ -50,13 +50,13 @@ namespace VentaVehiculoModelDB.Models
 		public string Genero { get; set; }
 
 		[Required(ErrorMessage = "El Teléfono es obligatorio")]
-		[RegularExpression("[^[0-9]{2,3}-? ?[0-9]{6,7}$]", ErrorMessage = "Ingrese un Teléfono Válido")]
+		//[RegularExpression("[^[0-9]{2,3}-? ?[0-9]{6,7}$]", ErrorMessage = "Ingrese un Teléfono Válido")]
 		public string Telefono { get; set; }
 
-        public int Jefe { get; set; }
+        public int? Jefe { get; set; }
 
 		[Required(ErrorMessage = "El Id_Usuario es obligatorio")]
-		public int Id_Usuario { get; set; }
+		public int? Id_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacturasOrdene> FacturasOrdenes { get; set; }
