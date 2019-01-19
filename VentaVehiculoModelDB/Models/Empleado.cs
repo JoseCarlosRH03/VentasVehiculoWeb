@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Empleado
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
@@ -21,17 +22,41 @@ namespace VentaVehiculoModelDB.Models
             this.Empleados1 = new HashSet<Empleado>();
         }
     
+		//[Required(ErrorMessage ="El Id es obligatorio")]
         public int ID { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Cedula { get; set; }
-        public System.DateTime FechaRegistro { get; set; }
-        public string Direccion { get; set; }
-        public string Correo { get; set; }
-        public string Genero { get; set; }
-        public string Telefono { get; set; }
+
+		[Required(ErrorMessage = "El Nombre es obligatorio")]
+		public string Nombre { get; set; }
+
+		[Required(ErrorMessage = "El Apellido es obligatorio")]
+		public string Apellido { get; set; }
+
+		[Required(ErrorMessage = "El Cedula es obligatorio")]
+		[RegularExpression("[^[1-9][0-9]*$]", ErrorMessage = "Ingrese una Cedula Valida")]
+		public string Cedula { get; set; }
+
+		[Required(ErrorMessage = "La Fecha es obligatorio")]
+		public System.DateTime FechaRegistro { get; set; }
+
+		[Required(ErrorMessage = "El Dirección es obligatorio")]
+		public string Direccion { get; set; }
+
+		[Required(ErrorMessage = "El Email es obligatorio")]
+		[EmailAddress(ErrorMessage = "Debe ingresar un Email válido")]
+		public string Correo { get; set; }
+
+		[Required(ErrorMessage = "El Genero es obligatorio")]
+		[RegularExpression("[MmFf]", ErrorMessage = "Solo puede ingresar una M=Masculino  F=Femenino")]
+		public string Genero { get; set; }
+
+		[Required(ErrorMessage = "El Teléfono es obligatorio")]
+		[RegularExpression("[^[0-9]{2,3}-? ?[0-9]{6,7}$]", ErrorMessage = "Ingrese un Teléfono Válido")]
+		public string Telefono { get; set; }
+
         public int Jefe { get; set; }
-        public int Id_Usuario { get; set; }
+
+		[Required(ErrorMessage = "El Id_Usuario es obligatorio")]
+		public int Id_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacturasOrdene> FacturasOrdenes { get; set; }
