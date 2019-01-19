@@ -1,7 +1,9 @@
 ﻿@model VentaVehiculoModelDB.Models.Empleado
 
 @{
-	ViewBag.Title = "Create";
+				/**/
+
+				ViewBag.Title = "Create";
 }
 <br />
 <br />
@@ -13,7 +15,7 @@
 @using (Html.BeginForm())
 {
 	@Html.AntiForgeryToken()
-	
+
 	<div class=" container card-body border border-light p-5 formulario z-depth-2">
 
 		<h2 class="text-center">Create</h2>
@@ -65,7 +67,7 @@
 
 			<div class="md-form col-md-3">
 				<i class="fas fa-at prefix"></i>
-				@Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", placeholder ="Email" } })
+				@Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
 				@Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
 				@*@Html.LabelFor(model => model.Correo, htmlAttributes: new { @class = "control-label col-md-2" })*@
 			</div>
@@ -86,7 +88,7 @@
 
 			<div class="md-form col-md-3">
 				<i class="fas fa-user-secret prefix d-none d-md-block"></i>
-				@Html.DropDownList("Jefe", null, "jefe Empleado", htmlAttributes: new { @class = "browser-default custom-select offset-md-2", placeholder="Jefe" })
+				@Html.DropDownList("Jefe", null, "jefe Empleado", htmlAttributes: new { @class = "browser-default custom-select offset-md-2", placeholder = "Jefe" })
 				@Html.ValidationMessageFor(model => model.Jefe, "", new { @class = "text-danger" })
 			</div>
 
@@ -112,4 +114,6 @@
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+	<script src="~/Scripts/jsFiles/Validations.js"></script>
 }
