@@ -1,0 +1,50 @@
+﻿@model VentaVehiculoModelDB.Models.DetalleOrden
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DetalleOrden</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalDetalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalDetalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orden.ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vehiculo.Color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vehiculo.Color)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

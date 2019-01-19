@@ -1,0 +1,27 @@
+﻿@{
+    var year = new List<int>();
+}
+
+
+<select class="browser-default custom-select">
+
+    <option selected disabled>Años</option>
+
+    @for (int x = 1990; x <= (1 + DateTime.Now.Year); x++)
+    {
+        year.Add(@x);
+    }
+
+    @{
+        year.Reverse();
+    }
+
+
+    @foreach (var a in @year)
+    {
+        <option value="@a">@a</option>
+    }
+
+
+
+</select>
