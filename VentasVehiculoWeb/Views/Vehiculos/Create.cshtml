@@ -53,9 +53,9 @@
                 @Html.ValidationMessageFor(model => model.Id_Estado, "", new { @class = "text-danger" })
             </div>
 
-            <div class="form-group col-md-3 offset-md-1 marca">
+            <div class="form-group col-md-3 offset-md-1" id="Id_Marca">
                 <br />
-                <select class="browser-default custom-select modelo">
+                <select class="browser-default custom-select marca">
                     <option value="" disabled selected>Marcas</option>
                 </select>
 
@@ -126,10 +126,10 @@
 </div>
 
 @section Scripts {
-    <script src="~/Scripts/pueva.js"></script>
-    <script>
-     UrlMcarcaModelo = "@Url.Action("ModeloMarca","Vehiculoes")";
 
+    <script>
+     UrlMarcaModelo = "@Url.Action("ModeloMarca","Vehiculos")";
+     UrlMarca = "@Url.Action("Marca","Vehiculos")";
 
 
     </script>
