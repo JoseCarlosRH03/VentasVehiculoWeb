@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using VentaVehiculoModelDB.Models;
 
 namespace VentasVehiculoWeb.Controllers
@@ -148,5 +149,35 @@ namespace VentasVehiculoWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public JsonResult ModeloMarca(int valor)
+        {
+
+            using (var db = new VentasVehiculoDBEntities())
+            {
+
+                var datos = from s in db.Modelos
+                            where s.Id_Marca == valor
+                            select new { Id = s.ID, Name = s.Nombre };
+
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string d = serializer.Serialize(datos);
+                return Json(d);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult Marca()
+        {
+            using (var db = new VentasVehiculoDBEntities())
+            {
+                var datos = from s in db.Marcas select new { Id = s.ID, Name = s.Nombre };
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string d = serializer.Serialize(datos);
+                return Json(d);
+            }
+        }
+
     }
 }
