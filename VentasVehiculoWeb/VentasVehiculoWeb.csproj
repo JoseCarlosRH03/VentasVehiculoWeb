@@ -160,6 +160,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="imgProyect\logo.png" />
+    <Content Include="imgProyect\logoFavicon.png" />
     <Content Include="MDBootstrap\css\addons\datatables.css" />
     <Content Include="MDBootstrap\css\addons\datatables.min.css" />
     <Content Include="MDBootstrap\css\bootstrap.css" />
@@ -299,6 +301,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jsFiles\SelectDisabled.js" />
     <Content Include="Scripts\jsFiles\Validations.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />

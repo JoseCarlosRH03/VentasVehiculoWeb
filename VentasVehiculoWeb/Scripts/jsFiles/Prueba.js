@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    $("select option:first-child").attr('disabled', 'disabled');
+   
     var marcas = null;
     // cargar las  marcas 
     $.ajax({
