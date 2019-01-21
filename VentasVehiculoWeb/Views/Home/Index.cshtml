@@ -5,31 +5,36 @@
 
 <div style="height: 20vh" id="buscador">
   
-    <form class="row flex-center elegant-color rounded mb-2 position-relative z-depth-4" id="filtro" >
-        <h4 class="colorH4" style="color:white;">Buscador</h4>
-        <hr class="col-11 danger-color linea"/>
-        <div class="form-group col-md-2 ">
-            <select class="browser-default custom-select">
-                <option value="" disabled selected>Marca</option>
-            </select>
-        </div>
-        <div class="form-group col-md-2 ">
-            <select class="browser-default custom-select" disabled id="quitar2">
-                <option value="" disabled selected>Modelo</option>
-            </select>
-        </div>
-        <div class="form-group col-md-2 ">
+    <div class="card elegant-color ">
+        <div class="card-body ">
+            <div class="row">
+                <h4 class="text-center colorH4 col-4 offset-4" style="color:white;">Buscador</h4>
+                <hr class="col-11 danger-color linea" />
+                <div class="form-group col-md-2  ">
+                    <select class="browser-default custom-select">
+                        <option value="" disabled selected>Marca</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 offset-md-1">
+                    <select class="browser-default custom-select" disabled id="quitar2">
+                        <option value="" disabled selected>Modelo</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 offset-md-1">
 
-            <select class="browser-default custom-select">
-                <option value="" disabled selected>Tipo de vehiculo</option>
-            </select>
+                    <select class="browser-default custom-select">
+                        <option value="" disabled selected>Tipo</option>
+                    </select>
+                </div>
+                <div class="col-2 offset-1 boton">
+                    <button type="button" class="btn btn-danger">Buscar</button>
+                </div>
+            </div>
+            
         </div>
-        <div class="col-2 offset-1 boton" >
-            <button type="button" class="btn btn-danger">Buscar</button>
-        </div>
-
-    </form>
+    </div>
 
 
 
 </div>
+

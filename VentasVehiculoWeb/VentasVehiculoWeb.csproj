@@ -160,6 +160,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="imgProyect\foto1.jpg" />
+    <Content Include="imgProyect\foto2.jpg" />
+    <Content Include="imgProyect\foto3.jpg" />
+    <Content Include="imgProyect\foto4.jpg" />
+    <Content Include="imgProyect\foto5.jpg" />
     <Content Include="imgProyect\logo.png" />
     <Content Include="imgProyect\logoFavicon.png" />
     <Content Include="MDBootstrap\css\addons\datatables.css" />
