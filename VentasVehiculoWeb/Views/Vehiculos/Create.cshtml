@@ -13,114 +13,142 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-row">
+    <div class="form-row">
 
-            <h4>
-                <br />Vehiculo
-            </h4>
-            <hr class="col-md-12" />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <h4>
+            <br />Datos
+        </h4>
+        <hr class="col-md-12" />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="md-form col-md-3 ">
-                <i class="fas fa-dollar-sign prefix"></i>
-                @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger " })
-                @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
-            </div>
+        <div class="md-form col-md-3 ">
+            <i class="fas fa-dollar-sign prefix"></i>
+            @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger " })
+            @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
 
-            <div class="md-form col-md-3 offset-md-1">
-                <i class="fas fa-tachometer-alt prefix"></i>
-                @Html.EditorFor(model => model.Kilometraje, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Kilometraje, "", new { @class = "text-danger" })
-                @Html.LabelFor(model => model.Kilometraje, htmlAttributes: new { @class = "control-label col-md-2" })
-            </div>
+        <div class="md-form col-md-3 offset-md-1">
+            <i class="fas fa-tachometer-alt prefix"></i>
+            @Html.EditorFor(model => model.Kilometraje, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Kilometraje, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Kilometraje, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
 
-            <div class="md-form col-md-3 offset-md-1">
-                <i class="fas fa-palette prefix"></i>
-                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
-                @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
-            </div>
+        <div class="md-form col-md-3 offset-md-1">
+            <i class="fas fa-palette prefix"></i>
+            @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+        </div>
 
-            <div class="form-group  col-md-3">
-                <br />
-                @Html.Partial("_year")
-            </div>
+        <div class="form-group  col-md-3">
+            <br />
+            @Html.Partial("_year")
+        </div>
 
-            <div class="form-group col-md-3 offset-md-1 ">
-                <br />
-                @Html.DropDownList("Id_Estado", null, "Estado del vehiculo", htmlAttributes: new { @class = "browser-default custom-select val" })
-                @Html.ValidationMessageFor(model => model.Id_Estado, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-group col-md-3 offset-md-1 ">
+            <br />
+            @Html.DropDownList("Id_Estado", null, "Estado del vehiculo", htmlAttributes: new { @class = "browser-default custom-select val" })
+            @Html.ValidationMessageFor(model => model.Id_Estado, "", new { @class = "text-danger" })
+        </div>
 
-            <div class="form-group col-md-3 offset-md-1" id="Id_Marca">
-                <br />
-                <select class="browser-default custom-select marca">
-                    <option value="" disabled selected>Marcas</option>
-                </select>
+        <div class="form-group col-md-3 offset-md-1" id="Id_Marca">
+            <br />
+            <select class="browser-default custom-select marca">
+                <option value="" disabled selected>Marcas</option>
+            </select>
 
-            </div>
+        </div>
 
-            <div class="form-group col-md-3 ">
-                <br />
-                <select class="browser-default custom-select modelo" disabled id="quitar2">
-                    <option value="" disabled selected>seleccione un modelo</option>
-                </select>
+        <div class="form-group col-md-3 ">
+            <br />
+            <select class="browser-default custom-select modelo" disabled id="quitar2">
+                <option value="" disabled selected>seleccione un modelo</option>
+            </select>
 
-            </div>
+        </div>
 
-            <div class="form-group col-md-3 offset-md-1">
-                <br />
-                @Html.DropDownList("Id_Suplidor", null, "Suplidor", htmlAttributes: new { @class = "browser-default custom-select val" })
-                @Html.ValidationMessageFor(model => model.Id_Suplidor, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-group col-md-3 offset-md-1">
+            <br />
+            @Html.DropDownList("Id_Suplidor", null, "Suplidor", htmlAttributes: new { @class = "browser-default custom-select val" })
+            @Html.ValidationMessageFor(model => model.Id_Suplidor, "", new { @class = "text-danger" })
+        </div>
+
+        <h4 class="col-12">
+            <br />
+            <br />
+            Datos Técnicos
+        </h4>
+        <hr class="col-md-12 fotos" />
+
+        <div class="form-group col-md-3 ">
+            <br />
+            @Html.DropDownList("Id_Combustible", null, "combustibles", htmlAttributes: new { @class = "browser-default custom-select val" })
+            @Html.ValidationMessageFor(model => model.Id_Combustible, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-3 ">
+            <br />
+            <select class="browser-default custom-select traccion" disabled id="quitar2">
+                <option value="" disabled selected>Tipo de traccion</option>
+            </select>
+
+        </div>
+
+        <div class="form-group col-md-3 ">
+            <br />
+            @Html.DropDownList("Id_Asiento", null, "Filas de asientos", htmlAttributes: new { @class = "browser-default custom-select val" })
+            @Html.ValidationMessageFor(model => model.Id_Asiento, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group col-md-3">
+            <br />
+            @Html.DropDownList("Id_TipoVehiculo", null, "Tipo de vehiculo", htmlAttributes: new { @class = "browser-default custom-select val" })
+            @Html.ValidationMessageFor(model => model.Id_TipoVehiculo, "", new { @class = "text-danger" })
+        </div>
+     
+        <div class="container row">
 
             <h4 class="col-12">
                 <br />
                 <br />
-                Datos Técnicos
+                Imagenes 
             </h4>
             <hr class="col-md-12 fotos" />
-
-            <div class="form-group col-md-3 ">
-                <br />
-                @Html.DropDownList("Id_Combustible", null, "combustibles", htmlAttributes: new { @class = "browser-default custom-select val" })
-                @Html.ValidationMessageFor(model => model.Id_Combustible, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group col-md-3 ">
-                <br />
-                <select class="browser-default custom-select traccion" disabled id="quitar2">
-                    <option value="" disabled selected>Tipo de traccion</option>
-                </select>
-
-            </div>
-
-            <div class="form-group col-md-3 ">
-                <br />
-                @Html.DropDownList("Id_Asiento", null, "Filas de asientos", htmlAttributes: new { @class = "browser-default custom-select val" })
-                @Html.ValidationMessageFor(model => model.Id_Asiento, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group col-md-3">
-                <br />
-                @Html.DropDownList("Id_TipoVehiculo", null, "Tipo de vehiculo", htmlAttributes: new { @class = "browser-default custom-select val" })
-                @Html.ValidationMessageFor(model => model.Id_TipoVehiculo, "", new { @class = "text-danger" })
-            </div>
-
-            <div class="form-group col-md-2">
-                <br />
-                <br />
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+            <div class="input-group col-5 " style="margin:0;">
+                <div class="input-group-prepend logo">
+                    <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-file-upload"></i></span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" multiple class="fileUpload" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">Seleciones una Imagen</label>
                 </div>
             </div>
-            <div class="form-group col-md-3">
+            <br />
+            <br />
+            <div class="file-upload-container col-12">
+
+            </div>
+            <br />
+            
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <br />
                 <br />
-                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+            <div class="form-group col-md-5">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Continuar" class="btn btn-default" />
+                </div>
+            </div>
+            <div class="form-group col-md-5">
+                @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })
             </div>
         </div>
+    </div>
+
     }
 
 </div>
@@ -130,8 +158,8 @@
     <script>
      UrlMarcaModelo = "@Url.Action("ModeloMarca","Vehiculos")";
      UrlMarca = "@Url.Action("Marca","Vehiculos")";
-
-
+     UrlUpload = "@Url.Action("UploadFiles", "Vehiculos")";
+     
     </script>
     @Scripts.Render("~/bundles/jqueryval")
 }

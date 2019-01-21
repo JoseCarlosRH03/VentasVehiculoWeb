@@ -1,6 +1,14 @@
 ﻿$(document).ready(function () {
 
-   
+    $(".fileUpload").on("change", function () {
+        var files = $(this).get(0).files;
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formData.append(files[i].name, files[i]);
+        }
+
+        uploadFiles(formData);
+    });
     var marcas = null;
     // cargar las  marcas 
     $.ajax({
@@ -69,7 +77,36 @@
         });
     });
 
+    /* cargar imagenes */
+    //$(document).ready(function () {
+      
+    //});
 
-    
+  
+    function uploadFiles(formData) {
+        $.ajax({
+            url: UrlUpload,
+            method: "POST",
+            data: formData,
+            dataType: 'Json',
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                var str = "";
+               
+
+                for (var i = 0; i < data.length; i++) {
+                    str += "<img class='img - fluid' alt='Responsive image' src='" + data[i] + "' height='100' width='100'>";
+                }
+                var jose = JSON.stringify(data);
+                console.log(jose);
+                $(".file-upload-container").append(str);
+            },
+            error: function (data) {
+                alert("Upload Failed!");
+            }
+        });
+    }
+    //
 });
 
