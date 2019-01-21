@@ -9,10 +9,16 @@ using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using VentaVehiculoModelDB.Models;
 
+
 namespace VentasVehiculoWeb.Controllers
 {
     public class VehiculosController : Controller
     {
+        public VehiculosController()
+        {
+            
+        }
+
         private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
 
         // GET: Vehiculos
@@ -70,6 +76,25 @@ namespace VentasVehiculoWeb.Controllers
             ViewBag.Id_Suplidor = new SelectList(db.Suplidores, "ID", "NombreEmpresa", vehiculo.Id_Suplidor);
             ViewBag.Id_TipoVehiculo = new SelectList(db.TipoVehiculos, "ID", "Tipo", vehiculo.Id_TipoVehiculo);
             return View(vehiculo);
+        }
+
+        [System.Web.Http.HttpPost]
+        public JsonResult UploadFiles( )
+        {
+            HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
+            string[] path = new string[files.Count];
+            for (var i = 0; i < files.Count; i++)
+            {
+                HttpPostedFile file = files[i];
+              
+                string roothPath = "~/Upload/" + file.FileName;
+                path[i] = roothPath.Substring(1);
+           
+                file.SaveAs(System.Web.HttpContext.Current.Server.MapPath(roothPath));
+           
+            }
+
+            return Json(path) ;
         }
 
         // GET: Vehiculos/Edit/5

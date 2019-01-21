@@ -27,6 +27,9 @@ header {
     height: 20%;
 }
 
+
+/* filtro del home page */
+
 #buscador{
     margin-top:-60px;
 }
@@ -37,3 +40,36 @@ h4{
     margin-top: -8px;
 }
 
+.primerInput{
+    margin-left:50px;
+}
+
+
+@media only screen and (max-width: 990px) {
+
+    .primerInput {
+        margin-left: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 990px) {
+
+    .primerInput {
+        margin-left:5px;
+    }
+
+}
+
+@media only screen and (max-width: 766px) {
+
+    .primerInput {
+        margin-left: 0px;
+    }
+}
+
+/* file input */
+
+.logo {
+    border:0px;
+}
