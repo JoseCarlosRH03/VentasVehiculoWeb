@@ -86,12 +86,11 @@ namespace VentasVehiculoWeb.Controllers
             for (var i = 0; i < files.Count; i++)
             {
                 HttpPostedFile file = files[i];
-              
+
                 string roothPath = "~/Upload/" + file.FileName;
                 path[i] = roothPath.Substring(1);
-           
+          
                 file.SaveAs(System.Web.HttpContext.Current.Server.MapPath(roothPath));
-           
             }
 
             return Json(path) ;
