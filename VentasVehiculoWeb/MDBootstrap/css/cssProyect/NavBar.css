@@ -10,7 +10,7 @@
 
 @media only screen and (max-width: 916px) {
     .navbar {
-        background-color: #4285F4;
+        background-color: #2E2E2E;
     }
 
 .br {
@@ -31,9 +31,9 @@ header {
     margin-top:-60px;
 }
 h4{
-    margin-bottom:-20px;
+    margin-bottom:-10px;
 }
 .boton {
-    margin-top: -15px;
+    margin-top: -8px;
 }
 
