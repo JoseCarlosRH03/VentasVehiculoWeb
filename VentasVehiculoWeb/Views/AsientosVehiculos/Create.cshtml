@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";  // poner en todos los formularios que tienes que editar para que no salga la imagen
 }
 
 <h2>Create</h2>
@@ -11,24 +12,25 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>AsientosVehiculo</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CantidadAsiento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CantidadAsiento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CantidadAsiento, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-inline" >
+    <h4>Asientos Vehiculo</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+    <div class="md-form col-md-3 ">
+        <i class="fas fa-dollar-sign prefix"></i>
+        @Html.EditorFor(model => model.CantidadAsiento, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.CantidadAsiento, "", new { @class = "text-danger " })
+        @Html.LabelFor(model => model.CantidadAsiento, htmlAttributes: new { @class = "control-label col-md-2" })
+    </div>
+   
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
+</div>
 }
 
 <div>

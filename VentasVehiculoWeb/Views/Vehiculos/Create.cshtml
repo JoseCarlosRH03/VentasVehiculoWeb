@@ -2,27 +2,27 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";
+    Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml"; // poner en todos los formularios que tienes que editar para que no salga la imagen
 }
 
-<div class="container card-body border border-light p-5 formulario z-depth-2 flex-center flex-column">
-    <h2 class="text-center">Nuevo Vehiculo</h2>
+<div class="container card-body border border-light p-5 formulario z-depth-2 flex-center flex-column"><!--cerpo-->
+    <h2 class="text-center">Nuevo Vehiculo</h2><!--titulo-->
 
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-    <div class="form-row">
+    <div class="form-row"><!--oto cuerpo-->
 
         <h4>
-            <br />Datos
+            <br />Datos<!--otro titulo-->
         </h4>
-        <hr class="col-md-12" />
+        <hr class="col-md-12" /><!--linea del formulrio-->
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="md-form col-md-3 ">
-            <i class="fas fa-dollar-sign prefix"></i>
+            <i class="fas fa-dollar-sign prefix"></i><!--textos-->
             @Html.EditorFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger " })
             @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -47,7 +47,7 @@
             @Html.Partial("_year")
         </div>
 
-        <div class="form-group col-md-3 offset-md-1 ">
+        <div class="form-group col-md-3 offset-md-1 "><!--select-->
             <br />
             @Html.DropDownList("Id_Estado", null, "Estado del vehiculo", htmlAttributes: new { @class = "browser-default custom-select val" })
             @Html.ValidationMessageFor(model => model.Id_Estado, "", new { @class = "text-danger" })
@@ -133,7 +133,7 @@
             <br />
             
         </div>
-        <div class="row">
+        <div class="row"><!--los botones-->
             <div class="col-12">
                 <br />
                 <br />
