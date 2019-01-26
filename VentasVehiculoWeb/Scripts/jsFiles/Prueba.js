@@ -1,15 +1,9 @@
 ﻿$(document).ready(function () {
 
-    $(".fileUpload").on("change", function () {
-        var files = $(this).get(0).files;
-        var formData = new FormData();
-        for (var i = 0; i < files.length; i++) {
-            formData.append(files[i].name, files[i]);
-        }
-
-        uploadFiles(formData);
-    });
     var marcas = null;
+    var modelos = null;
+    var traccion = null;
+    var textModelo = null;
     // cargar las  marcas 
     $.ajax({
 
@@ -40,12 +34,12 @@
 
     //ajax de los modelos
     $(document).on("change", ".marca", function () {
-        var opciones = null;
+        
 
         $(".quitar").remove();
-
+        $(".modelo").val('*');
         var id = parseInt($(this).val());
-        console.log(id);
+
         $.ajax({
 
             type: "POST",
@@ -59,16 +53,36 @@
             success: function (data) {
                 $("#quitar2").removeAttr("disabled");
                 opciones = JSON.parse(data);
-
+                modelos = opciones;
                 if (opciones.length === 0) {
                     alert("no hay datos");
                 } else {
+
+                    
+                    var precentar = null;
                     for (var x = 0; x <= opciones.length; x++) {
-                        $(".modelo").append("<option class='quitar' value='" + opciones[x].Id + "'>" + opciones[x].Name + "</option>");
+                        var modelo = $(".modelo option");
+                        
+                        
+                        for (var i = 0; i <= (modelo.length-1); i++) {
+
+                            if (opciones[x]["Name"] === modelo[i].text) {
+                                precentar = false;
+                            } else {
+                                precentar = true;
+                            }
+                        }
+
+                        if (precentar) {
+                            $(".modelo").append("<option class='quitar' value='" + opciones[x]["Id"] + "'>" + opciones[x]["Name"] + "</option>");
+                        }
+                       
+                        
                     }
+                    
                 }
                 
-
+              
             },
             error: function (xhr, request, status, error) {
                 alert(xhr.status);
@@ -77,36 +91,67 @@
         });
     });
 
-    /* cargar imagenes */
-    //$(document).ready(function () {
-      
-    //});
+    
+    //ajax de los traccion
+    $(document).on("change", ".modelo", function () {
 
-  
-    function uploadFiles(formData) {
-        $.ajax({
-            url: UrlUpload,
-            method: "POST",
-            data: formData,
-            dataType: 'Json',
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                var str = "";
-               
+        textModelo = $(this).children("option:selected").text();
+        $(".quitar3").remove();
 
-                for (var i = 0; i < data.length; i++) {
-                    str += "<img class='img - fluid' alt='Responsive image' src='" + data[i] + "' height='100' width='100'>";
+        if (traccion !== null) {
+            TraccionAjax(traccion);
+        } else {
+
+            $.ajax({
+
+                type: "POST",
+                url: UrlTraccion,
+                dataType: 'Json',
+
+                done: function (data) {
+
+                },
+                success: function (data) {
+                    $("#quitar4").removeAttr("disabled");
+                    opciones = JSON.parse(data);
+                    TraccionAjax(opciones);
+                },
+                error: function (xhr, request, status, error) {
+                    alert(xhr.status);
+                    alert(request.responseText);
                 }
-                var jose = JSON.stringify(data);
-                console.log(jose);
-                $(".file-upload-container").append(str);
-            },
-            error: function (data) {
-                alert("Upload Failed!");
+            });
+        }
+
+       
+    });
+
+
+    function TraccionAjax(opciones) {
+
+        traccion = opciones;
+        if (opciones.length === 0) {
+            alert("no hay datos");
+        } else {
+
+            for (var x = 0; x <= modelos.length; x++) {
+
+                if (modelos[x].Name === textModelo) {
+
+                    for (var i = 0; i < opciones.length; i++) {
+
+                        if (modelos[x].Traccion === opciones[i].Id) {
+
+                            $(".traccion").append("<option class='quitar3' value='" + opciones[i].Id + "'>" + opciones[i].Nombre + "</option>");
+                        }
+                    }
+                }
             }
-        });
-    }
-    //
+        }
+
+
+    };
+
+
 });
 

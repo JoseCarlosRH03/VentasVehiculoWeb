@@ -154,6 +154,7 @@
     <Compile Include="Controllers\OrdensController.cs" />
     <Compile Include="Controllers\SuplidoresController.cs" />
     <Compile Include="Controllers\TipoVehiculoesController.cs" />
+    <Compile Include="Controllers\TraccionVehiculoesController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VehiculosController.cs" />
     <Compile Include="Global.asax.cs">
@@ -319,6 +320,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jsFiles\SelectDisabled.js" />
     <Content Include="Scripts\jsFiles\Validations.js" />
+    <Content Include="Scripts\jsFiles\VehiculoForm.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -442,6 +444,11 @@
     <Content Include="Views\TipoVehiculoes\Index.cshtml" />
     <Content Include="Views\MantenimientoTablasVehiculo\Index.cshtml" />
     <Content Include="Views\Shared\_Layout2SinCarousel.cshtml" />
+    <Content Include="Views\TraccionVehiculoes\Create.cshtml" />
+    <Content Include="Views\TraccionVehiculoes\Delete.cshtml" />
+    <Content Include="Views\TraccionVehiculoes\Details.cshtml" />
+    <Content Include="Views\TraccionVehiculoes\Edit.cshtml" />
+    <Content Include="Views\TraccionVehiculoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,10 +14,6 @@ namespace VentasVehiculoWeb.Controllers
 {
     public class VehiculosController : Controller
     {
-        public VehiculosController()
-        {
-            
-        }
 
         private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
 
@@ -183,7 +179,7 @@ namespace VentasVehiculoWeb.Controllers
 
                 var datos = from s in db.Modelos
                             where s.Id_Marca == valor
-                            select new { Id = s.ID, Name = s.Nombre };
+                            select new { Id = s.ID, Name = s.Nombre, Traccion = s.Id_Traccion };
 
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 string d = serializer.Serialize(datos);
@@ -197,6 +193,23 @@ namespace VentasVehiculoWeb.Controllers
             using (var db = new VentasVehiculoDBEntities())
             {
                 var datos = from s in db.Marcas select new { Id = s.ID, Name = s.Nombre };
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                string d = serializer.Serialize(datos);
+                return Json(d);
+            }
+        }
+
+
+        [HttpPost]
+        public JsonResult Traccion()
+        {
+
+            using (var db = new VentasVehiculoDBEntities())
+            {
+
+                var datos = from s in db.TraccionVehiculos
+                            select new { Id = s.ID, Nombre = s.Traccion };
+
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 string d = serializer.Serialize(datos);
                 return Json(d);
