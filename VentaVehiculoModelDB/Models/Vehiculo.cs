@@ -26,7 +26,7 @@ namespace VentaVehiculoModelDB.Models
         public decimal Precio { get; set; }
         public decimal Kilometraje { get; set; }
         public string Color { get; set; }
-        public System.DateTime Año { get; set; }
+        public string Año { get; set; }
         public int Id_Combustible { get; set; }
         public int Id_TipoVehiculo { get; set; }
         public int Id_Asiento { get; set; }

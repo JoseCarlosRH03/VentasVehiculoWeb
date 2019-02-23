@@ -10,112 +10,107 @@ using VentaVehiculoModelDB.Models;
 
 namespace VentasVehiculoWeb.Controllers
 {
-    public class ImagenVehiculosController : Controller
+    public class TraccionVehiculoesController : Controller
     {
         private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
 
-        // GET: ImagenVehiculos
+        // GET: TraccionVehiculoes
         public ActionResult Index()
         {
-            var imagenVehiculos = db.ImagenVehiculos.Include(i => i.Vehiculo);
-            return View(imagenVehiculos.ToList());
+            return View(db.TraccionVehiculos.ToList());
         }
 
-        // GET: ImagenVehiculos/Details/5
+        // GET: TraccionVehiculoes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ImagenVehiculo imagenVehiculo = db.ImagenVehiculos.Find(id);
-            if (imagenVehiculo == null)
+            TraccionVehiculo traccionVehiculo = db.TraccionVehiculos.Find(id);
+            if (traccionVehiculo == null)
             {
                 return HttpNotFound();
             }
-            return View(imagenVehiculo);
+            return View(traccionVehiculo);
         }
 
-        // GET: ImagenVehiculos/Create
+        // GET: TraccionVehiculoes/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Vehiculo = new SelectList(db.Vehiculos, "ID", "Color");
             return View();
         }
 
-        // POST: ImagenVehiculos/Create
+        // POST: TraccionVehiculoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,RutaImagen,Id_Vehiculo")] ImagenVehiculo imagenVehiculo)
+        public ActionResult Create([Bind(Include = "ID,Traccion")] TraccionVehiculo traccionVehiculo)
         {
             if (ModelState.IsValid)
             {
-                db.ImagenVehiculos.Add(imagenVehiculo);
+                db.TraccionVehiculos.Add(traccionVehiculo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Vehiculo = new SelectList(db.Vehiculos, "ID", "Color", imagenVehiculo.Id_Vehiculo);
-            return View(imagenVehiculo);
+            return View(traccionVehiculo);
         }
 
-        // GET: ImagenVehiculos/Edit/5
+        // GET: TraccionVehiculoes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ImagenVehiculo imagenVehiculo = db.ImagenVehiculos.Find(id);
-            if (imagenVehiculo == null)
+            TraccionVehiculo traccionVehiculo = db.TraccionVehiculos.Find(id);
+            if (traccionVehiculo == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id_Vehiculo = new SelectList(db.Vehiculos, "ID", "Color", imagenVehiculo.Id_Vehiculo);
-            return View(imagenVehiculo);
+            return View(traccionVehiculo);
         }
 
-        // POST: ImagenVehiculos/Edit/5
+        // POST: TraccionVehiculoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,RutaImagen,Id_Vehiculo")] ImagenVehiculo imagenVehiculo)
+        public ActionResult Edit([Bind(Include = "ID,Traccion")] TraccionVehiculo traccionVehiculo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(imagenVehiculo).State = EntityState.Modified;
+                db.Entry(traccionVehiculo).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_Vehiculo = new SelectList(db.Vehiculos, "ID", "Color", imagenVehiculo.Id_Vehiculo);
-            return View(imagenVehiculo);
+            return View(traccionVehiculo);
         }
 
-        // GET: ImagenVehiculos/Delete/5
+        // GET: TraccionVehiculoes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ImagenVehiculo imagenVehiculo = db.ImagenVehiculos.Find(id);
-            if (imagenVehiculo == null)
+            TraccionVehiculo traccionVehiculo = db.TraccionVehiculos.Find(id);
+            if (traccionVehiculo == null)
             {
                 return HttpNotFound();
             }
-            return View(imagenVehiculo);
+            return View(traccionVehiculo);
         }
 
-        // POST: ImagenVehiculos/Delete/5
+        // POST: TraccionVehiculoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ImagenVehiculo imagenVehiculo = db.ImagenVehiculos.Find(id);
-            db.ImagenVehiculos.Remove(imagenVehiculo);
+            TraccionVehiculo traccionVehiculo = db.TraccionVehiculos.Find(id);
+            db.TraccionVehiculos.Remove(traccionVehiculo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

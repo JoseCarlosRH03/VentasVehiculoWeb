@@ -2,17 +2,25 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";
+}
+
+<div class="container card-body border border-light p-5 formulario z-depth-2 flex-center flex-column">
+    <h2 class="text-center">Filas de Asientos</h2>
+
     Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";  // poner en todos los formularios que tienes que editar para que no salga la imagen
 }
 
 <div class="container card-body border border-light p-5 formulario z-depth-2 flex-center flex-column">
     <h2 class="text-center">Filas de Asientos</h2><!--titulo-->
 
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
     <div>
         <div class="form-row"><!--oto cuerpo-->
+
 
             <h4>
                 <br />Datos<!--otro titulo-->
@@ -46,11 +54,12 @@
                 <div class="form-group col-md-5">
                     @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-primary" })
                 </div>
+
             </div>
         </div>
     </div>
     }
-
+  
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
@@ -59,3 +68,4 @@
         @Scripts.Render("~/bundles/jqueryval")
     }
 </div>
+

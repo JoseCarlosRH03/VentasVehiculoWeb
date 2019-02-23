@@ -1,4 +1,4 @@
-﻿@model IEnumerable<VentaVehiculoModelDB.Models.ImagenVehiculo>
+﻿@model IEnumerable<VentaVehiculoModelDB.Models.TraccionVehiculo>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RutaImagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vehiculo.Color)
+            @Html.DisplayNameFor(model => model.Traccion)
         </th>
         <th></th>
     </tr>
@@ -23,10 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RutaImagen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vehiculo.Color)
+            @Html.DisplayFor(modelItem => item.Traccion)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VentasVehiculoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VentasVehiculoDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AsientosVehiculos">
           <Key>
             <PropertyRef Name="ID" />
@@ -176,8 +176,8 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Kilometraje" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Color" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="Año" Type="date" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Año" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Id_Combustible" Type="int" Nullable="false" />
           <Property Name="Id_TipoVehiculo" Type="int" Nullable="false" />
           <Property Name="Id_Asiento" Type="int" Nullable="false" />
@@ -206,42 +206,6 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             </Principal>
             <Dependent Role="FacturasOrdenes">
               <PropertyRef Name="Id_Empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Asiento">
-          <End Role="AsientosVehiculos" Type="Self.AsientosVehiculos" Multiplicity="1" />
-          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AsientosVehiculos">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Vehiculos">
-              <PropertyRef Name="Id_Asiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Combustible">
-          <End Role="CombustibleVehiculos" Type="Self.CombustibleVehiculos" Multiplicity="1" />
-          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CombustibleVehiculos">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Vehiculos">
-              <PropertyRef Name="Id_Combustible" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_Estado">
-          <End Role="EstadoVehiculos" Type="Self.EstadoVehiculos" Multiplicity="1" />
-          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EstadoVehiculos">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Vehiculos">
-              <PropertyRef Name="Id_Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -305,30 +269,6 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_Suplidor">
-          <End Role="Suplidores" Type="Self.Suplidores" Multiplicity="1" />
-          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Suplidores">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Vehiculos">
-              <PropertyRef Name="Id_Suplidor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_tipoVehiculo">
-          <End Role="TipoVehiculos" Type="Self.TipoVehiculos" Multiplicity="1" />
-          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TipoVehiculos">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Vehiculos">
-              <PropertyRef Name="Id_TipoVehiculo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_traccion">
           <End Role="TraccionVehiculos" Type="Self.TraccionVehiculos" Multiplicity="1" />
           <End Role="Modelos" Type="Self.Modelos" Multiplicity="*" />
@@ -374,18 +314,6 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             </Principal>
             <Dependent Role="DetalleOrden">
               <PropertyRef Name="Id_Vehiculo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_VehicuModelo">
-          <End Role="Modelos" Type="Self.Modelos" Multiplicity="1" />
-          <End Role="Vehiculos" Type="Self.Vehiculos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Modelos">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Vehiculos">
-              <PropertyRef Name="Id_Modelo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -449,18 +377,6 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="FacturasOrdenes" EntitySet="FacturasOrdenes" />
           </AssociationSet>
-          <AssociationSet Name="fk_Asiento" Association="Self.fk_Asiento">
-            <End Role="AsientosVehiculos" EntitySet="AsientosVehiculos" />
-            <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Combustible" Association="Self.fk_Combustible">
-            <End Role="CombustibleVehiculos" EntitySet="CombustibleVehiculos" />
-            <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Estado" Association="Self.fk_Estado">
-            <End Role="EstadoVehiculos" EntitySet="EstadoVehiculos" />
-            <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
           <AssociationSet Name="fk_estadoOrden" Association="Self.fk_estadoOrden">
             <End Role="EstadoOrden" EntitySet="EstadoOrden" />
             <End Role="Orden" EntitySet="Orden" />
@@ -481,14 +397,6 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             <End Role="Orden" EntitySet="Orden" />
             <End Role="FacturasOrdenes" EntitySet="FacturasOrdenes" />
           </AssociationSet>
-          <AssociationSet Name="fk_Suplidor" Association="Self.fk_Suplidor">
-            <End Role="Suplidores" EntitySet="Suplidores" />
-            <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
-          <AssociationSet Name="fk_tipoVehiculo" Association="Self.fk_tipoVehiculo">
-            <End Role="TipoVehiculos" EntitySet="TipoVehiculos" />
-            <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
           <AssociationSet Name="fk_traccion" Association="Self.fk_traccion">
             <End Role="TraccionVehiculos" EntitySet="TraccionVehiculos" />
             <End Role="Modelos" EntitySet="Modelos" />
@@ -505,10 +413,6 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             <End Role="Vehiculos" EntitySet="Vehiculos" />
             <End Role="DetalleOrden" EntitySet="DetalleOrden" />
           </AssociationSet>
-          <AssociationSet Name="fk_VehicuModelo" Association="Self.fk_VehicuModelo">
-            <End Role="Modelos" EntitySet="Modelos" />
-            <End Role="Vehiculos" EntitySet="Vehiculos" />
-          </AssociationSet>
           <AssociationSet Name="Usuario_fk" Association="Self.Usuario_fk">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="Clientes" EntitySet="Clientes" />
@@ -518,8 +422,7 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
             <End Role="ImagenVehiculos" EntitySet="ImagenVehiculos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VentasVehiculoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -703,8 +606,8 @@ warning 6002: The table/view 'VentasVehiculoDB.dbo.FacturasOrdenes' does not hav
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Kilometraje" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Color" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Año" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Año" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Id_Combustible" Type="Int32" Nullable="false" />
           <Property Name="Id_TipoVehiculo" Type="Int32" Nullable="false" />
           <Property Name="Id_Asiento" Type="Int32" Nullable="false" />
