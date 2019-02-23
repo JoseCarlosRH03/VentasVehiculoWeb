@@ -1,13 +1,32 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Routing;
+using System.Web.Script.Serialization;
+using System.Xml.Linq;
+using VentaVehiculoModelDB.Models;
+using VentasVehiculoWeb.models;
 
 namespace VentasVehiculoWeb.Controllers
 {
     public class HomeController : Controller
     {
+
+
+        private Modelos modelos;
+       
+        private List<Modelos> modelosList = new List<Modelos>();
+
+        private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
+
         public ActionResult Index()
         {
             return View();
@@ -26,5 +45,29 @@ namespace VentasVehiculoWeb.Controllers
 
             return View();
         }
-    }
+
+        public ActionResult ListadoVehiculos()
+        {
+            var vehiculos = db.Vehiculos.Include(v => v.AsientosVehiculo).Include(v => v.CombustibleVehiculo).Include(v => v.EstadoVehiculo).Include(v => v.Modelo).Include(v => v.Suplidore).Include(v => v.TipoVehiculo);
+
+            foreach (var item in vehiculos.ToList())
+            {
+
+                ImagenVehiculo imagenVeh = db.ImagenVehiculos.Find(item.ID);
+
+                Marca marca = db.Marcas.Find(item.Modelo.Id_Marca);
+               
+                modelos = new Modelos
+                {
+                    Vehiculos = item,
+                    Imagenes = imagenVeh,
+                    Marca = marca,
+
+                };
+
+                modelosList.Add(modelos);
+            } 
+            return View(modelosList);
+        }
+    } 
 }

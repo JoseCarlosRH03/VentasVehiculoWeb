@@ -20,8 +20,7 @@ namespace VentasVehiculoWeb.Controllers
     public class VehiculosController : Controller
     {
        
-        private string controlador = "";
-        private string funcion = "";
+       
         private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
 
         // GET: Vehiculos

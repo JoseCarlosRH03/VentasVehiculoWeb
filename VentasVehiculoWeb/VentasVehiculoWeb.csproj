@@ -160,6 +160,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="models\Modelos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +322,7 @@
     <Content Include="Scripts\jsFiles\SelectDisabled.js" />
     <Content Include="Scripts\jsFiles\Validations.js" />
     <Content Include="Scripts\jsFiles\ImagenesVehiculo.js" />
+    <Content Include="Scripts\jsFiles\CartasHomePage.js" />
     <Content Include="Scripts\jsFiles\VehiculoForm.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -450,6 +452,7 @@
     <Content Include="Views\ImagenVehiculoes\Details.cshtml" />
     <Content Include="Views\ImagenVehiculoes\Edit.cshtml" />
     <Content Include="Views\ImagenVehiculoes\Index.cshtml" />
+    <Content Include="Views\Home\ListadoVehiculos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

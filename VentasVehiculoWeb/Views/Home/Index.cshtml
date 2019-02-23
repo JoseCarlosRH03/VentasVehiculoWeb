@@ -3,39 +3,17 @@
     ViewBag.Title = "Home Page";
 }
 
-<div style="height: 20vh" id="buscador">
-  
-    <div class="card elegant-color ">
-        <div class="card-body ">
-            <div class="row">
-                <h4 class="text-center colorH4 col-4 offset-4" style="color:white;">Buscador</h4>
-                <hr class="col-11 danger-color linea" />
-                <div class="form-group col-md-2 primerInput ">
-                    <select class="browser-default custom-select">
-                        <option value="" disabled selected>Marca</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-2 offset-md-1">
-                    <select class="browser-default custom-select" disabled id="quitar2">
-                        <option value="" disabled selected>Modelo</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-2 offset-md-1">
 
-                    <select class="browser-default custom-select">
-                        <option value="" disabled selected>Tipo</option>
-                    </select>
-                </div>
-                <div class="col-2 offset-1 boton">
-                    <button type="button" class="btn btn-danger">Buscar</button>
-                </div>
-               
-            </div>
-            
-        </div>
+
+
+<div>
+    <br />
+    <br />
+    <div class="container">
+        @Html.Partial("ListadoVehiculos")
     </div>
-
-
-
 </div>
+
+
+
 
