@@ -55,6 +55,7 @@ namespace VentasVehiculoWeb.Controllers
         {
             try
             {
+
                 string ImageName = System.IO.Path.GetFileName(file.FileName);
                 string physicalPath = Server.MapPath("~/Imagenes/" + ImageName);
                 file.SaveAs(physicalPath);
