@@ -51,7 +51,7 @@ namespace VentasVehiculoWeb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase file, string Id_Vehiculo /*[Bind(Include = "ID,RutaImagen,Id_Vehiculo")] ImagenVehiculo imagenVehiculo*/)
+        public ActionResult Create(HttpPostedFileBase file /*string Id_Vehiculo [Bind(Include = "ID,RutaImagen,Id_Vehiculo")] ImagenVehiculo imagenVehiculo*/)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace VentasVehiculoWeb.Controllers
 
                 ImagenVehiculo objImangenVehiculo = new ImagenVehiculo
                 {
-                    Id_Vehiculo = int.Parse(Id_Vehiculo),
+                    Id_Vehiculo = int.Parse(Request.Form["Id_Vehiculo"]),
                     RutaImagen = ImageName
                 };
 
