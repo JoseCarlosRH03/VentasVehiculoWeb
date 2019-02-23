@@ -63,7 +63,7 @@
 
             <div class="form-group col-md-3 ">
                 <br />
-                <select class="browser-default custom-select modelo" disabled id="quitar2" name="modelo">
+                <select class="browser-default custom-select modelo" disabled id="quitar2" name="Id_Modelo">
                     <option value="*" disabled selected>seleccione un modelo</option>
                 </select>
 
@@ -108,31 +108,7 @@
                 @Html.ValidationMessageFor(model => model.Id_TipoVehiculo, "", new { @class = "text-danger" })
             </div>
 
-            <div class="container row">
 
-                <h4 class="col-12">
-                    <br />
-                    <br />
-                    Imagenes
-                </h4>
-                <hr class="col-md-12 fotos" />
-                <div class="input-group col-5 " style="margin:0;">
-                    <div class="input-group-prepend logo">
-                        <span class="input-group-text" id="inputGroupFileAddon01"><i class="fas fa-file-upload"></i></span>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" multiple class="fileUpload" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Seleciones una Imagen</label>
-                    </div>
-                </div>
-                <br />
-                <br />
-                <div class="file-upload-container col-12">
-
-                </div>
-                <br />
-
-            </div>
             <div class="row">
                 <div class="col-12">
                     <br />
@@ -161,7 +137,8 @@
      UrlMarca = "@Url.Action("Marca","Vehiculos")";
      UrlTraccion = "@Url.Action("Traccion","Vehiculos")";
      UrlUpload = "@Url.Action("UploadFiles", "Vehiculos")";
-     
+     UrlCreate = "@Url.Action("Create", "Vehiculos")";
+        UrlCreateImagen = "@Url.Action("CreateImagenes", "ImagenVehiculoes")";  
     </script>
     @Scripts.Render("~/bundles/jqueryval")
 }

@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AsientosVehiculo.cs">
       <DependentUpon>VentasVehiculoEntity.tt</DependentUpon>
     </Compile>

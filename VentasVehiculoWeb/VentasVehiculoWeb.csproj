@@ -146,7 +146,7 @@
     <Compile Include="Controllers\FacturasOrdenesController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImagenVehiculosController.cs" />
+    <Compile Include="Controllers\ImagenVehiculoesController.cs" />
     <Compile Include="Controllers\InvetarioVehiculosController.cs" />
     <Compile Include="Controllers\MantenimientoTablasVehiculoController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
@@ -320,6 +320,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jsFiles\SelectDisabled.js" />
     <Content Include="Scripts\jsFiles\Validations.js" />
+    <Content Include="Scripts\jsFiles\ImagenesVehiculo.js" />
     <Content Include="Scripts\jsFiles\VehiculoForm.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -407,11 +408,6 @@
     <Content Include="Views\FacturasOrdenes\Details.cshtml" />
     <Content Include="Views\FacturasOrdenes\Edit.cshtml" />
     <Content Include="Views\FacturasOrdenes\Index.cshtml" />
-    <Content Include="Views\ImagenVehiculos\Create.cshtml" />
-    <Content Include="Views\ImagenVehiculos\Delete.cshtml" />
-    <Content Include="Views\ImagenVehiculos\Details.cshtml" />
-    <Content Include="Views\ImagenVehiculos\Edit.cshtml" />
-    <Content Include="Views\ImagenVehiculos\Index.cshtml" />
     <Content Include="Views\InvetarioVehiculos\Create.cshtml" />
     <Content Include="Views\InvetarioVehiculos\Delete.cshtml" />
     <Content Include="Views\InvetarioVehiculos\Details.cshtml" />
@@ -449,11 +445,16 @@
     <Content Include="Views\TraccionVehiculoes\Details.cshtml" />
     <Content Include="Views\TraccionVehiculoes\Edit.cshtml" />
     <Content Include="Views\TraccionVehiculoes\Index.cshtml" />
+    <Content Include="Views\ImagenVehiculoes\CreateImagenes.cshtml" />
+    <Content Include="Views\ImagenVehiculoes\Delete.cshtml" />
+    <Content Include="Views\ImagenVehiculoes\Details.cshtml" />
+    <Content Include="Views\ImagenVehiculoes\Edit.cshtml" />
+    <Content Include="Views\ImagenVehiculoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\" />
     <Folder Include="MDBootstrap\scss\addons-pro\" />
-    <Folder Include="Upload\" />
     <Folder Include="Views\FileUpload\" />
   </ItemGroup>
   <ItemGroup>

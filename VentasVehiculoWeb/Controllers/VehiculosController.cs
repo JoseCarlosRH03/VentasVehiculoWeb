@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Routing;
 using System.Web.Script.Serialization;
+using System.Xml.Linq;
 using VentaVehiculoModelDB.Models;
 
 
@@ -14,11 +19,13 @@ namespace VentasVehiculoWeb.Controllers
 {
     public class VehiculosController : Controller
     {
-
+       
+        private string controlador = "";
+        private string funcion = "";
         private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
 
         // GET: Vehiculos
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var vehiculos = db.Vehiculos.Include(v => v.AsientosVehiculo).Include(v => v.CombustibleVehiculo).Include(v => v.EstadoVehiculo).Include(v => v.Modelo).Include(v => v.Suplidore).Include(v => v.TipoVehiculo);
             return View(vehiculos.ToList());
@@ -55,41 +62,34 @@ namespace VentasVehiculoWeb.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Precio,Kilometraje,Color,Año,Id_Combustible,Id_TipoVehiculo,Id_Asiento,Id_Estado,Id_Modelo,Id_Suplidor")] Vehiculo vehiculo)
         {
+             var mensaje = 0;
+
             if (ModelState.IsValid)
             {
-                db.Vehiculos.Add(vehiculo);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Vehiculos.Add(vehiculo);
+                    db.SaveChanges();
+                    mensaje = vehiculo.ID;
+                }
+
+                catch (DbEntityValidationException e)
+                {
+                    mensaje = 0;
+                }
+
             }
-
-            ViewBag.Id_Asiento = new SelectList(db.AsientosVehiculos, "ID", "ID", vehiculo.Id_Asiento);
-            ViewBag.Id_Combustible = new SelectList(db.CombustibleVehiculos, "ID", "Tipo", vehiculo.Id_Combustible);
-            ViewBag.Id_Estado = new SelectList(db.EstadoVehiculos, "ID", "Estado", vehiculo.Id_Estado);
-            ViewBag.Id_Modelo = new SelectList(db.Modelos, "ID", "Nombre", vehiculo.Id_Modelo);
-            ViewBag.Id_Suplidor = new SelectList(db.Suplidores, "ID", "NombreEmpresa", vehiculo.Id_Suplidor);
-            ViewBag.Id_TipoVehiculo = new SelectList(db.TipoVehiculos, "ID", "Tipo", vehiculo.Id_TipoVehiculo);
-            return View(vehiculo);
-        }
-
-        [System.Web.Http.HttpPost]
-        public JsonResult UploadFiles( )
-        {
-            HttpFileCollection files = System.Web.HttpContext.Current.Request.Files;
-            string[] path = new string[files.Count];
-            for (var i = 0; i < files.Count; i++)
+            else
             {
-                HttpPostedFile file = files[i];
-
-                string roothPath = "~/Upload/" + file.FileName;
-                path[i] = roothPath.Substring(1);
-          
-                file.SaveAs(System.Web.HttpContext.Current.Server.MapPath(roothPath));
+                mensaje = 0;
             }
 
-            return Json(path) ;
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            string d = serializer.Serialize(mensaje);
+            return Json(d);  
         }
 
         // GET: Vehiculos/Edit/5

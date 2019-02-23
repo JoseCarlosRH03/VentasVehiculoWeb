@@ -11,9 +11,8 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-	using System.ComponentModel.DataAnnotations;
-
-	public partial class Cliente
+    
+    public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
@@ -22,33 +21,15 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
-
-		[Required(ErrorMessage ="El Nombre es obligatorio")]
         public string Nombre { get; set; }
-
-		[Required(ErrorMessage = "El Apellido es obligatorio")]
-		public string Apellido { get; set; }
-
-		[Required(ErrorMessage = "La Cedula es obligatorio")]
-		public string Cedula { get; set; }
-
-		[Required(ErrorMessage = "La Fecha es obligatorio")]
-		public System.DateTime FechaRegistro { get; set; }
-
-		[Required(ErrorMessage = "La Dirección es obligatorio")]
-		public string Direccion { get; set; }
-
-		[Required(ErrorMessage = "El Correo es obligatorio")]
-		public string Correo { get; set; }
-
-		[Required(ErrorMessage = "El Genero es obligatorio")]
-		public string Genero { get; set; }
-
-		[Required(ErrorMessage = "El Teléfono es obligatorio")]
-		public string Telefono { get; set; }
-
-		[Required(ErrorMessage = "El Usuario es obligatorio")]
-		public int Id_Usuario { get; set; }
+        public string Apellido { get; set; }
+        public string Cedula { get; set; }
+        public System.DateTime FechaRegistro { get; set; }
+        public string Direccion { get; set; }
+        public string Correo { get; set; }
+        public string Genero { get; set; }
+        public string Telefono { get; set; }
+        public int Id_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orden> Ordens { get; set; }
