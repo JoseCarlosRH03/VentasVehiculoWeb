@@ -70,15 +70,15 @@ namespace VentasVehiculoWeb.Controllers
                 {
                     db.ImagenVehiculos.Add(objImangenVehiculo);
                     db.SaveChanges();
-                    return RedirectToAction("/Create/Vehiculos");
+                    return RedirectToAction("../Create/Vehiculos");
                 }
             }
             catch (Exception)
             {
-                return RedirectToAction("/Create/Vehiculos");
+                return RedirectToAction("../Create/Vehiculos");
             }
 
-            return RedirectToAction("/Create/Vehiculos");
+            return RedirectToAction("../Create/Vehiculos");
 
         }
 

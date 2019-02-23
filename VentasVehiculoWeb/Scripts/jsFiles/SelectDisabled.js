@@ -15,6 +15,11 @@
         }
     });
 
-    
+    $("#aqui").click(function () {
+        $('html, body').animate({
+            scrollTop: $(".parca").offset().top
+        }, 1500);
+    });
+   
 });
 

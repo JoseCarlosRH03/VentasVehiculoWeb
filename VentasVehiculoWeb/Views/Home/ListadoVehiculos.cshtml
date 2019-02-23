@@ -1,0 +1,94 @@
+﻿@model IEnumerable<VentasVehiculoWeb.models.Modelos>
+@{int a;}
+<div style="height: 20vh" id="buscador">
+
+    <div class="card elegant-color ">
+        <div class="card-body ">
+            <div class="row">
+                <h4 class="text-center colorH4 col-4 offset-4" style="color:white;">Buscador</h4>
+                <hr class="col-11 danger-color linea" />
+                <div class="form-group col-md-2 primerInput ">
+                    <select class="browser-default custom-select">
+                        <option value="" disabled selected>Marca</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 offset-md-1">
+                    <select class="browser-default custom-select" disabled id="quitar2">
+                        <option value="" disabled selected>Modelo</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2 offset-md-1">
+
+                    <select class="browser-default custom-select">
+                        <option value="" disabled selected>Tipo</option>
+                    </select>
+                </div>
+                <div class="col-2 offset-1 boton">
+                    <button type="button" class="btn btn-danger">Buscar</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<br />
+
+<br />
+<div class="row " id="aqui">
+    <div class="row " style="margin: auto">
+
+        @foreach (var item in Model)
+        {
+
+
+            <!-- Card -->               /**/
+            /**/
+
+
+                            <div class="card col-3">
+
+                                <!-- Card image -->
+                                <div class="view overlay" >
+                                    <br />
+                                    <img class="card-img-top" src="~/Imagenes/@Html.DisplayFor(modelItem => item.Imagenes.RutaImagen)" alt="Card image cap">
+                                    <a href="#!">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+
+                                <!-- Card content -->
+                                <div class="card-body">
+
+                                    <!-- Title -->
+
+                                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Marca.Nombre)<p class="d-inline">&nbsp;@Html.DisplayFor(modelItem => item.Vehiculos.Modelo.Nombre)</p></h5>
+                                    <!-- Text -->
+                                    <p class="card-text d-inline"><strong>Precio:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Precio)</p>
+                                    <p class="card-text d-inline"><strong>Año:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Año)</p>
+                                    <p class="card-text d-inline"><strong>Combutible:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.CombustibleVehiculo.Tipo)</p>
+                                    <p class="card-text"><strong>Estado:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.EstadoVehiculo.Estado)</p>
+                                </div>
+
+                            </div>
+
+
+
+                            /**/
+                            <!-- Card -->
+                            /**/
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                        }
+    </div>
+    <div class="parca"></div>
+</div>
+@section Scripts {
+    <script type="text/javascript" src="~/Scripts/jsFiles/SelectDisabled.js"></script>
+}
