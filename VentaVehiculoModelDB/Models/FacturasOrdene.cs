@@ -11,15 +11,26 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class FacturasOrdene
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class FacturasOrdene
     {
         public int ID { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public int Id_Empleado { get; set; }
-        public int Id_Orden { get; set; }
-        public string TipoPago { get; set; }
-        public decimal Cambio { get; set; }
+
+		[Required(ErrorMessage = "El Fecha es Requerido")]
+		public System.DateTime Fecha { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Empleado { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Orden { get; set; }
+
+		[Required(ErrorMessage = "El Tipo de Pago es Requerido")]
+		public string TipoPago { get; set; }
+
+		[Required(ErrorMessage = "El Cambio es Requerido")]
+		public decimal Cambio { get; set; }
     
         public virtual Empleado Empleado { get; set; }
         public virtual Orden Orden { get; set; }

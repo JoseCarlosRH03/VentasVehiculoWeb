@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Orden
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Orden
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Orden()
@@ -22,14 +23,30 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
-        public int Id_Cliente { get; set; }
-        public int Id_Empleado { get; set; }
-        public int Id_TipoOrden { get; set; }
-        public int Id_EstadoOrden { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public decimal SubTotal { get; set; }
-        public decimal Itbis { get; set; }
-        public decimal Total { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Cliente { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Empleado { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_TipoOrden { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_EstadoOrden { get; set; }
+
+		[Required(ErrorMessage = "El Fecha es Requerido")]
+		public System.DateTime Fecha { get; set; }
+
+		[Required(ErrorMessage = "El SubTotal es Requerido")]
+		public decimal SubTotal { get; set; }
+
+		[Required(ErrorMessage = "El Itbs es Requerido")]
+		public decimal Itbis { get; set; }
+
+		[Required(ErrorMessage = "El Total es Requerido")]
+		public decimal Total { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

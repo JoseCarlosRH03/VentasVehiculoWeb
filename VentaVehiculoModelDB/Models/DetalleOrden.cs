@@ -11,14 +11,23 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class DetalleOrden
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class DetalleOrden
     {
         public int ID { get; set; }
-        public int Cantidad { get; set; }
-        public decimal TotalDetalle { get; set; }
-        public int Id_Orden { get; set; }
-        public int Id_Vehiculo { get; set; }
+
+		[Required(ErrorMessage = "El Cantidad es Requerido")]
+		public int Cantidad { get; set; }
+
+		[Required(ErrorMessage = "El Total Detalle es Requerido")]
+		public decimal TotalDetalle { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Orden { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Vehiculo { get; set; }
     
         public virtual Orden Orden { get; set; }
         public virtual Vehiculo Vehiculo { get; set; }

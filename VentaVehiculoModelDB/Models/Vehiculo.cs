@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Vehiculo
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Vehiculo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Vehiculo()
@@ -23,16 +24,36 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
-        public decimal Precio { get; set; }
-        public decimal Kilometraje { get; set; }
-        public string Color { get; set; }
-        public string Año { get; set; }
-        public int Id_Combustible { get; set; }
-        public int Id_TipoVehiculo { get; set; }
-        public int Id_Asiento { get; set; }
-        public int Id_Estado { get; set; }
-        public int Id_Modelo { get; set; }
-        public int Id_Suplidor { get; set; }
+
+		[Required(ErrorMessage = "El precio es Requerido")]
+		public decimal Precio { get; set; }
+
+		[Required(ErrorMessage = "El Kilometraje es Requerido")]
+		public decimal Kilometraje { get; set; }
+
+		[Required(ErrorMessage = "El Color es Requerido")]
+		public string Color { get; set; }
+
+		[Required(ErrorMessage = "El Año es Requerido")]
+		public string Año { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Minimo un Caracter")]
+		public int Id_Combustible { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Minimo un Caracter")]
+		public int Id_TipoVehiculo { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Asiento { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Estado { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Modelo { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Suplidor { get; set; }
     
         public virtual AsientosVehiculo AsientosVehiculo { get; set; }
         public virtual CombustibleVehiculo CombustibleVehiculo { get; set; }

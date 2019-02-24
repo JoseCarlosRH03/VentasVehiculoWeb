@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Cliente
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cliente()
@@ -21,15 +22,35 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Cedula { get; set; }
-        public System.DateTime FechaRegistro { get; set; }
-        public string Direccion { get; set; }
-        public string Correo { get; set; }
-        public string Genero { get; set; }
-        public string Telefono { get; set; }
-        public int Id_Usuario { get; set; }
+
+		[Required(ErrorMessage = "El Nombre es Requerido")]
+		public string Nombre { get; set; }
+
+		[Required(ErrorMessage = "El Apellido es Requerido")]
+		public string Apellido { get; set; }
+
+		[Required(ErrorMessage = "El Cedula es Requerido")]
+		public string Cedula { get; set; }
+
+		[Required(ErrorMessage = "El Fecha es Requerida")]
+		public System.DateTime FechaRegistro { get; set; }
+
+		[Required(ErrorMessage = "La Dirección es Requerida")]
+		public string Direccion { get; set; }
+
+		[Required(ErrorMessage = "El Correo es Requerido")]
+		[EmailAddress(ErrorMessage = "Ingrese un Email Válido")]
+		public string Correo { get; set; }
+
+		[Required(ErrorMessage = "El Genero es Requerido")]
+		public string Genero { get; set; }
+
+		[Required(ErrorMessage = "El Telófono es Requerido")]
+		public string Telefono { get; set; }
+
+		[Required(ErrorMessage = "El Usuario es Requerido")]
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orden> Ordens { get; set; }

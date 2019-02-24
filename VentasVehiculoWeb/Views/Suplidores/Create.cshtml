@@ -26,21 +26,21 @@
                     <i class="fas fa-building prefix"></i>
                     @Html.EditorFor(model => model.NombreEmpresa, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.NombreEmpresa, "", new { @class = "text-danger " })
-                    @Html.LabelFor(model => model.NombreEmpresa, "Nombre de la empresa", htmlAttributes: new { @class = "control-label col-md-10" })
+                    @Html.LabelFor(model => model.NombreEmpresa, htmlAttributes: new { @class = "control-label col-md-10" })
                 </div>
 
                 <div class="md-form col-md-5 ">
                     <i class="fas fa-map-marked-alt prefix"></i>
                     @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger " })
-                    @Html.LabelFor(model => model.Direccion, "Direccion", htmlAttributes: new { @class = "control-label col-md-10" })
+                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-10" })
                 </div>
 
                 <div class="md-form col-md-5 ">
                     <i class="fas fa-phone prefix"></i>
                     @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger " })
-                    @Html.LabelFor(model => model.Telefono, "Telefono", htmlAttributes: new { @class = "control-label col-md-10" })
+                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-10" })
                 </div>
 
                 <div class="row">
@@ -54,7 +54,7 @@
                     <div class="form-group row">
 
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="button" value="Listo" class="btn btn-default" />
+                            <input type="submit" value="Create" class="btn btn-default" />
                         </div>
                     </div>
                     <div class="form-group col-md-5">
