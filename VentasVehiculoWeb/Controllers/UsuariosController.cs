@@ -6,12 +6,16 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using VentasVehiculoWeb.models;
 using VentaVehiculoModelDB.Models;
 
 namespace VentasVehiculoWeb.Controllers
 {
     public class UsuariosController : Controller
     {
+        private string controlador;
+        private string metodo;
+
         private VentasVehiculoDBEntities db = new VentasVehiculoDBEntities();
 
         // GET: Usuarios
@@ -52,7 +56,7 @@ namespace VentasVehiculoWeb.Controllers
             {
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Clientes");
             }
 
             return View(usuario);
@@ -123,5 +127,72 @@ namespace VentasVehiculoWeb.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Validar([Bind(Include = "ID,NombreUsuario,PasswordUsuario")] Usuario usuario)
+        {  
+            if (ModelState.IsValid)
+            {
+                
+                using (var db = new VentasVehiculoDBEntities())
+                {
+
+                    var datos = from s in db.Usuarios
+                                where s.NombreUsuario == usuario.NombreUsuario && s.PasswordUsuario == usuario.PasswordUsuario
+                                select s;
+
+                    if (datos == null || datos.Count() == 0)
+                    {
+                        metodo = "Usuarios"; controlador = "Home";
+                    }
+                    else
+                    {
+                        foreach (var item in datos.ToList())
+                        {
+                            if (item.PasswordUsuario == usuario.PasswordUsuario && item.NombreUsuario == usuario.NombreUsuario)
+                            {
+                                SessionData sessionObj = new SessionData();
+                                sessionObj.SetSession(usuario.ID, usuario.NombreUsuario);
+
+                                metodo = "ListadoVehiculos"; controlador = "Home";  
+                            }
+                            else
+                            {
+                                metodo = "Usuarios"; controlador = "Home"; 
+                            }
+                        }
+                    }
+                }
+
+            }
+            else { metodo = "Usuarios"; controlador = "Home"; }
+
+            return RedirectToAction(metodo,controlador );
+
+        }
+
+        //login
+        SessionData session = new SessionData();
+        // GET: User
+        public ActionResult Users()
+        {
+            ViewBag.User = session.GetSession("UserName");
+            if (ViewBag.User == "")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Close()
+        {
+            session.DestroySession();
+            return RedirectToAction("Users", "User");
+        }
     }
+
 }

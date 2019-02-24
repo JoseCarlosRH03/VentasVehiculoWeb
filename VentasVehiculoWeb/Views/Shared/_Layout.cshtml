@@ -17,7 +17,6 @@
 <body>
     <!--Main Navigation-->
     <header style="height: auto">
-
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" style="height: auto">
             <a class="navbar-brand" href="#"><strong><img src="~/imgProyect/logo.png" class="img-fluid z-depth-1 rounded-circle" alt="Responsive image"></strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -26,19 +25,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    @{
+                    string user = Convert.ToString(Session["UserName"]);
+
+                    if (@user != null && @user != "")
+                    {
+                    <li class="nav-item  ">
+                        @Html.ActionLink("Log Out", "LoignOut", "Home", null, new { @class = "nav-link" })
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class=" nav-link ">Bienvenido: @user</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                    }
+                    else
+                    {
+                    <li class="nav-item  ">
+                        @Html.ActionLink("Login In", "Usuarios", "Home", null, new { @class = "nav-link " })
                     </li>
+                    }
+                    }
                 </ul>
             </div>
         </nav>
-
         <div class="view intro-2">
             <br class="br" />
             <br class="br" />
@@ -70,12 +79,10 @@
                 </a>
             </div>
         </div>
-
     </header>
     <!--Main Navigation-->
     <!--Main Layout-->
     <!-- Start your project here-->
-
 
     <div class="container body-content">
         @RenderBody()
@@ -85,7 +92,6 @@
         </footer>
     </div>
     <!-- /Start your project here-->
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script type="text/javascript" src="~/MDBootstrap/js/popper.min.js"></script>
@@ -94,4 +100,4 @@
     <script type="text/javascript" src=""></script>
     @RenderSection("scripts", required: false)
 </body>
-</htm>
+</html>

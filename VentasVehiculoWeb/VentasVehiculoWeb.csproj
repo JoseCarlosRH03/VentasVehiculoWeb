@@ -161,6 +161,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="models\Modelos.cs" />
+    <Compile Include="models\SessionData.cs" />
+    <Compile Include="models\Userlogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +235,14 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -243,14 +253,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="MDBootstrap\font\roboto\Roboto-Bold.eot" />
     <Content Include="MDBootstrap\font\roboto\Roboto-Bold.ttf" />
     <Content Include="MDBootstrap\font\roboto\Roboto-Bold.woff" />
@@ -453,11 +455,14 @@
     <Content Include="Views\ImagenVehiculoes\Edit.cshtml" />
     <Content Include="Views\ImagenVehiculoes\Index.cshtml" />
     <Content Include="Views\Home\ListadoVehiculos.cshtml" />
+    <Content Include="Views\Home\Usuarios.cshtml" />
+    <Content Include="Views\Home\SingIn.cshtml" />
+    <Content Include="Views\Home\IndexLogin.cshtml" />
+    <Content Include="Views\Home\ComprarVehiculo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\" />
-    <Folder Include="MDBootstrap\scss\addons-pro\" />
     <Folder Include="Views\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
