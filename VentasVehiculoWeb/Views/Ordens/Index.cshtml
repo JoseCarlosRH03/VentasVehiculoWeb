@@ -1,75 +1,105 @@
 ﻿@model IEnumerable<VentaVehiculoModelDB.Models.Orden>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Listados de Ordenes</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_Empleado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_TipoOrden)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SubTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Itbis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EstadoOrden.Nombre)
-        </th>
-        <th></th>
-    </tr>
+@*Search O filter*@
+<div class="row">
+	<div class="col-sm-2">
+		@Html.ActionLink("Create New", "Create", new { @Style = "margin-botton:10px" }, new { @class = "btn btn-success" })
+	</div>
+	<div class="col-lg-10">
+		<input class="form-control" id="input_search" type="text" name="search" placeholder="busqueda" />
+	</div>
+</div>
+<div class="row">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.Id_Empleado)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Id_TipoOrden)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Fecha)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.SubTotal)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Itbis)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Total)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Cliente.Nombre)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.EstadoOrden.Nombre)
+				</th>
+				<th>
+					Acciones
+				</th>
+			</tr>
+		</thead>
+		<tbody id="table_body">
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Id_Empleado)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Id_TipoOrden)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Fecha)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.SubTotal)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Itbis)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Total)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Cliente.Nombre)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.EstadoOrden.Nombre)
+					</td>
+					<td>
+						@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary " })
+						@Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success " })
+						@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger " })
+					</td>
+				</tr>
+			}
+		</tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_Empleado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_TipoOrden)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubTotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Itbis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EstadoOrden.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+
+	</table>
+</div>
+@*Realiza la busqueda, en la tabla*@
+@section scripts
+	{
+	<script>
+		$(document).ready(function () {
+			$("#input_search").on("keyup", function () {
+				var value = $(this).val().toLowerCase();
+				$("#table_body tr").filter(function () {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
+	</script>
 }
 
-</table>

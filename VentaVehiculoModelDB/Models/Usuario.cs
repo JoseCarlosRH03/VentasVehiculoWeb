@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Usuario
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
@@ -22,8 +23,12 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
-        public string NombreUsuario { get; set; }
-        public string PasswordUsuario { get; set; }
+
+		[Required(ErrorMessage = "El Nombre de Usuario es Requerido")]
+		public string NombreUsuario { get; set; }
+
+		[Required(ErrorMessage = "El Password es Requerido")]
+		public string PasswordUsuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> Clientes { get; set; }

@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Suplidore
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Suplidore
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Suplidore()
@@ -21,9 +22,15 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
-        public string NombreEmpresa { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
+
+		[Required(ErrorMessage = "El Nombre es Requerido")]
+		public string NombreEmpresa { get; set; }
+
+		[Required(ErrorMessage = "La Dirección es Requerido")]
+		public string Direccion { get; set; }
+
+		[Required(ErrorMessage = "El Teléfono es Requerido")]
+		public string Telefono { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vehiculo> Vehiculos { get; set; }

@@ -11,8 +11,9 @@ namespace VentaVehiculoModelDB.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Empleado
+	using System.ComponentModel.DataAnnotations;
+
+	public partial class Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
@@ -22,16 +23,37 @@ namespace VentaVehiculoModelDB.Models
         }
     
         public int ID { get; set; }
+
+		[Required(ErrorMessage ="El Nombre es Requerido")]
         public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Cedula { get; set; }
-        public System.DateTime FechaRegistro { get; set; }
-        public string Direccion { get; set; }
-        public string Correo { get; set; }
-        public string Genero { get; set; }
-        public string Telefono { get; set; }
-        public int Jefe { get; set; }
-        public int Id_Usuario { get; set; }
+
+		[Required(ErrorMessage = "El Apellido es Requerido")]
+		public string Apellido { get; set; }
+
+		[Required(ErrorMessage = "El Cedula es Requerido")]
+		public string Cedula { get; set; }
+
+		[Required(ErrorMessage = "El Fecha es Requerido")]
+		public System.DateTime FechaRegistro { get; set; }
+
+		[Required(ErrorMessage = "La Dirección es Requerido")]
+		public string Direccion { get; set; }
+
+		[Required(ErrorMessage = "El Email es Requerido")]
+		[EmailAddress(ErrorMessage = "Ingrese un Email Válido")]
+		public string Correo { get; set; }
+
+		[Required(ErrorMessage = "El Genero es Requerido")]
+		public string Genero { get; set; }
+
+		[Required(ErrorMessage = "El Telefono es Requerido")]
+		public string Telefono { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Jefe { get; set; }
+
+		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		public int Id_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacturasOrdene> FacturasOrdenes { get; set; }
