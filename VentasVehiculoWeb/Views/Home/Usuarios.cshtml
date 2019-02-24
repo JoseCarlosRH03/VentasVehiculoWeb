@@ -1,0 +1,36 @@
+﻿@model  VentaVehiculoModelDB.Models.Usuario
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";
+}
+
+<h2>Usuarios</h2>
+
+<div class="container">
+    <div class="card card-container">
+        <h2 class="titleLoing">LogIn</h2>
+
+
+        @using (Html.BeginForm("Validar", "Usuarios", FormMethod.Post, new { @class = "form-signin" }))
+        {@Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div>
+            @Html.TextBoxFor(dl => dl.NombreUsuario, new { @class = "form-control", @placeholder = "Usuario" })
+            @Html.ValidationMessageFor(dl => dl.NombreUsuario, "", new { @class = "text-danger" })
+        </div><br />
+        <br />
+        <div>
+            @Html.TextBoxFor(dl => dl.PasswordUsuario, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(dl => dl.PasswordUsuario, "", new { @class = "text-danger" })
+        </div><br />
+        <br />
+        if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <p class="ErrorMessage">@ViewBag.Message</p>
+        }
+        <input type="submit" value="Login In" class="btn btn-signin" />
+    }
+
+        @Html.ActionLink("Registrar", "Create", "Usuarios")
+    </div>
+</div>

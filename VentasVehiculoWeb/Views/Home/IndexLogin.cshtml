@@ -1,0 +1,39 @@
+﻿@model VentasVehiculoWeb.models.SignIn
+@{
+    ViewBag.Title = "IndexLogin";
+    Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";
+}
+
+<!-- Default form login -->
+<form class="text-center border border-light p-5 col-md-6">
+
+    <p class="h4 mb-4">Sign in</p>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @using (Html.BeginForm("Usuarios", "Home", FormMethod.Post, new { @class = "form-signin" }))
+    {
+        <div>
+            @Html.TextBoxFor(dl => dl.UserName, new { @class = "form-control", @placeholder = "Email" })
+            @Html.ValidationMessageFor(dl => dl.UserName, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <div>
+            @Html.TextBoxFor(dl => dl.Password, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(dl => dl.Password, "", new { @class = "text-danger" })
+        </div>
+        <br />
+        <input type="submit" value="Entrar" class="btn btn-signin light-blue-text mx-2" />
+        @Html.ActionLink("Registrar", "IndexLogin", "Home", null, new { @class = "nav-lin" })
+    }<br />
+
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <script type="text/javascript">
+                alert("El Email o Password es Incorrecto");
+                document.location = "Index";
+            </script>
+        }
+    }
+</form>
+<!-- Default form login -->
