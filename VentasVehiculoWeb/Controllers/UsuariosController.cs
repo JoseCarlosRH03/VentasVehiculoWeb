@@ -153,7 +153,7 @@ namespace VentasVehiculoWeb.Controllers
                             if (item.PasswordUsuario == usuario.PasswordUsuario && item.NombreUsuario == usuario.NombreUsuario)
                             {
                                 SessionData sessionObj = new SessionData();
-                                sessionObj.SetSession(usuario.ID, usuario.NombreUsuario);
+                                sessionObj.SetSession(item.ID, usuario.NombreUsuario);
 
                                 metodo = "ListadoVehiculos"; controlador = "Home";  
                             }
