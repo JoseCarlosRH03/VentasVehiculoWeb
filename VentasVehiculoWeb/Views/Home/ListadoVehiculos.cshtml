@@ -36,15 +36,16 @@
 
 <br />
 <div class="row  " id="aqui" style="margin:auto">
-
+    @Html.ActionLink("ruta", "ComprarVehiculo", "Home", new {@class="ruta", @style ="display:none" })
     @foreach (var item in Model)
     {
         <!-- Card --> /**/ /**/ /**/
-        <div class="card col-3">
+        <div class="card col-3" style="margin: 15px auto">
 
             <!-- Card image -->
             <div class="view overlay carta">
                 <br />
+                
                 <img class="card-img-top" src="~/Imagenes/@Html.DisplayFor(modelItem => item.Imagenes.RutaImagen)" alt="Card image cap">
                 <a href="#!">
                     <div class="mask rgba-white-slight"></div>
@@ -60,9 +61,11 @@
                 <!-- Text -->
                 <p class="card-text d-inline"><strong>Precio:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Precio)</p>
                 <p class="card-text d-inline"><strong>Año:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Año)</p>
-                <p class="card-text d-inline"><strong>Combutible:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.CombustibleVehiculo.Tipo)</p>
-                <p class="card-text"><strong>Estado:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.EstadoVehiculo.Estado)</p>
+                <p class="card-text d-inline"><strong>Combutible:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.CombustibleVehiculo.Tipo)</p><br />
+                <p class="card-text d-inline"><strong>Estado:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.EstadoVehiculo.Estado)</p><br />
+                <p class="card-text d-inline"><strong>Traccion:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Modelo.TraccionVehiculo.Traccion)</p>
                 <a class="valorID btn btn-danger" href="@Html.DisplayFor(modelItem => item.Vehiculos.ID)">Comprar</a>
+
             </div>
 
         </div>
@@ -71,20 +74,14 @@
         <!-- Card -->
         /**/
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
 
     }
 
 
 </div>
+<script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="~/MDBootstrap/js/popper.min.js"></script>
 <script type="text/javascript" src="~/MDBootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="~/MDBootstrap/js/mdb.min.js"></script>
-
+<script type="text/javascript" src="~/Scripts/jsFiles/CartasHomePage.js"></script>
 

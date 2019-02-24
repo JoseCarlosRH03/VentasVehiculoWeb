@@ -1,27 +1,27 @@
 ﻿$(document).ready(function () {
 
-    $("a").click(function () {
+   
+    $(".valorID").click(function () {
         event.preventDefault();
 
-        // cargar las  marcas 
-        //$.ajax({
+        $.ajax({
 
-        //    type: "POST",
-        //    url: UrlComprar,
-        //    dataType: 'Json',
-        //    data: { id: $(this).attr("href")},
-        //    done: function (data) {
+            type: "POST",
+            url: $(".ruta").attr("href"),
+            dataType: 'Json',
+            data: { id: $(this).attr("href")},
+            done: function (data) {
 
-        //    },
-        //    success: function (data) {
-        //        marcas = JSON.parse(data);
+            },
+            success: function (data) {
+                marcas = JSON.parse(data);
 
-        //    },
-        //    error: function (xhr, request, status, error) {
-        //        alert(xhr.status);
-        //        alert(request.responseText);
-        //    }
-        //});
+            },
+            error: function (xhr, request, status, error) {
+                alert(xhr.status);
+                alert(request.responseText);
+            }
+        });
 
     });
 });
