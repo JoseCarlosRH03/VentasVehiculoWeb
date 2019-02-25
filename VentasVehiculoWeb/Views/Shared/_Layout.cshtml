@@ -24,28 +24,55 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    @{
-                    string user = Convert.ToString(Session["UserName"]);
+				<ul class="navbar-nav mr-auto">
+					@{
+						string user = Convert.ToString(Session["UserName"]);
 
-                    if (@user != null && @user != "")
-                    {
-                    <li class="nav-item  ">
-                        @Html.ActionLink("Log Out", "LoignOut", "Home", null, new { @class = "nav-link" })
-                    </li>
+						if (@user != null && @user != "")
+						{
+							<li class="nav-item  ">
+								@Html.ActionLink("Vehiculos", "Index", "Vehiculos", null, new { @class = "nav-link" })
+							</li>
+							<li class="nav-item">
+								@Html.ActionLink("Clientes", "Index", "Clientes", null, new { @class = "nav-link" })
+							</li>
+							<li class="nav-item">
+								@Html.ActionLink("Suplidores", "Index", "Suplidores", null, new { @class = "nav-link" })
+							</li>
+							<li class="nav-item">
+								@Html.ActionLink("Ordenes", "Index", "Ordens", null, new { @class = "nav-link" })
+							</li>
 
-                    <li class="nav-item">
-                        <a class=" nav-link ">Bienvenido: @user</a>
-                    </li>
-                    }
-                    else
-                    {
-                    <li class="nav-item  ">
-                        @Html.ActionLink("Login In", "Usuarios", "Home", null, new { @class = "nav-link " })
-                    </li>
-                    }
-                    }
-                </ul>
+							<li class="nav-item  ">
+								@Html.ActionLink("Log Out", "LoignOut", "Home", null, new { @class = "nav-link" })
+							</li>
+
+							<li class="nav-item">
+								<a class=" nav-link ">Bienvenido: @user</a>
+							</li>
+						}
+						else
+						{
+							<li class="nav-item  ">
+								@Html.ActionLink("Vehiculos", "Index", "Vehiculos", null, new { @class = "nav-link" })
+							</li>
+							<li class="nav-item">
+								@Html.ActionLink("Clientes", "Index", "Clientes", null, new { @class = "nav-link" })
+							</li>
+							<li class="nav-item">
+								@Html.ActionLink("Suplidores", "Index", "Suplidores", null, new { @class = "nav-link" })
+							</li>
+							<li class="nav-item">
+								@Html.ActionLink("Ordenes", "Index", "Ordens", null, new { @class = "nav-link" })
+							</li>
+
+							<li class="nav-item">
+								@Html.ActionLink("Login In", "Usuarios", "Home", null, new { @class = "nav-link " })
+							</li>
+
+						}
+					}
+				</ul>
             </div>
         </nav>
         <div class="view intro-2">

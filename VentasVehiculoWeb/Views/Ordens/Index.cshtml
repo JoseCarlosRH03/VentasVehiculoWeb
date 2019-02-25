@@ -2,6 +2,7 @@
 
 @{
 	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";
 }
 
 <h2>Listados de Ordenes</h2>
@@ -9,14 +10,14 @@
 @*Search O filter*@
 <div class="row">
 	<div class="col-sm-2">
-		@Html.ActionLink("Create New", "Create", new { @Style = "margin-botton:10px" }, new { @class = "btn btn-success" })
+		@Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-success btn-rounded" })
 	</div>
-	<div class="col-lg-10">
+	<div class="col-lg-8">
 		<input class="form-control" id="input_search" type="text" name="search" placeholder="busqueda" />
 	</div>
 </div>
 <div class="row">
-	<table class="table">
+	<table class="table table-bordered">
 		<thead>
 			<tr>
 				<th>
@@ -76,10 +77,10 @@
 					<td>
 						@Html.DisplayFor(modelItem => item.EstadoOrden.Nombre)
 					</td>
-					<td>
-						@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary " })
-						@Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success " })
-						@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger " })
+					<td style="padding:12px 0 0 6px">
+						@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-sm ", @style = "width:auto" })
+						@Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success btn-sm ", @style = "width:auto" })
+						@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-sm ", @style = "width:auto" })
 					</td>
 				</tr>
 			}
