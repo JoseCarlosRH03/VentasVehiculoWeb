@@ -140,21 +140,40 @@ namespace VentasVehiculoWeb.Controllers
             var user = session.GetSession("UserName");
             var idUser = session.GetSession("Userid");
 
-            if (user != null || user != "")
+            if (user != null && user != "")
             {
-               Cliente clienteObj = db.Clientes.Find(id);
+               Cliente clienteObj = db.Clientes.Find(int.Parse( idUser));
 
                 if(clienteObj != null)
                 {
-                    return View();
+                    Vehiculo vehiculoObj = db.Vehiculos.Find(id);
+
+                    if(vehiculoObj != null)
+                    {
+
+
+                        ModelFactura factura = new ModelFactura
+                        {
+                            vehiculo = vehiculoObj,
+                            cliente = clienteObj
+                        };
+                        var mensaje = "su producto: " + vehiculoObj.Modelo.Marca.Nombre + " modelo : " + vehiculoObj.Modelo.Nombre + " estasiendo Procesada";
+
+                        return Json(mensaje);
+                    }
+                    else
+                    {
+                        return Json(Url.Action("ListadoVehiculos", "Home"));
+                    }
+                   
                 }else
                 {
-                    return RedirectToAction("Create", "Clientes");
+                    return Json( Url.Action("Create", "Clientes"));
                 }
             }
             else
             {
-                return RedirectToAction("Usuarios");
+                return Json(Url.Action("Usuarios","Home"));
             }
 
 
