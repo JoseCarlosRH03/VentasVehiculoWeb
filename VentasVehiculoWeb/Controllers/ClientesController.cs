@@ -50,6 +50,7 @@ namespace VentasVehiculoWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre,Apellido,Cedula,FechaRegistro,Direccion,Correo,Genero,Telefono,Id_Usuario")] Cliente cliente)
         {
+            
             if (ModelState.IsValid)
             {
                 db.Clientes.Add(cliente);
