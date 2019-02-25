@@ -2,6 +2,7 @@
 
 @{
 	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout2SinCarousel.cshtml";
 }
 
 <h2>Listados de Clientes</h2>
@@ -85,10 +86,10 @@
 					<td>
 						@Html.DisplayFor(modelItem => item.Usuario.NombreUsuario)
 					</td>
-					<td>
-						@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary " })
-						@Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success " })
-						@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger " })
+					<td style="padding:12px 0 0 6px">
+						@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-primary btn-sm ", @style = "width:auto" })
+						@Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-success btn-sm ", @style = "width:auto" })
+						@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger btn-sm ", @style = "width:auto" })
 					</td>
 				</tr>
 			}

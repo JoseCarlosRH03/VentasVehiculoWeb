@@ -49,7 +49,7 @@ namespace VentaVehiculoModelDB.Models
 		public string Telefono { get; set; }
 
 		[Required(ErrorMessage = "El Usuario es Requerido")]
-		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
 		public int Id_Usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

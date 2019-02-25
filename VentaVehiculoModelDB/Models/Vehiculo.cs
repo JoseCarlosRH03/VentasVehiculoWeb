@@ -25,34 +25,34 @@ namespace VentaVehiculoModelDB.Models
     
         public int ID { get; set; }
 
-		[Required(ErrorMessage = "El precio es Requerido")]
+		//[Required(ErrorMessage = "El precio es Requerido")]
 		public decimal Precio { get; set; }
 
-		[Required(ErrorMessage = "El Kilometraje es Requerido")]
+		//[Required(ErrorMessage = "El Kilometraje es Requerido")]
 		public decimal Kilometraje { get; set; }
 
-		[Required(ErrorMessage = "El Color es Requerido")]
+		//[Required(ErrorMessage = "El Color es Requerido")]
 		public string Color { get; set; }
 
-		[Required(ErrorMessage = "El Año es Requerido")]
+		//[Required(ErrorMessage = "El Año es Requerido")]
 		public string Año { get; set; }
 
-		[MinLength(1, ErrorMessage = " Ingrese Minimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Minimo un Caracter")]
 		public int Id_Combustible { get; set; }
 
-		[MinLength(1, ErrorMessage = " Ingrese Minimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Minimo un Caracter")]
 		public int Id_TipoVehiculo { get; set; }
 
-		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
 		public int Id_Asiento { get; set; }
 
-		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
 		public int Id_Estado { get; set; }
 
-		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
 		public int Id_Modelo { get; set; }
 
-		[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
+		//[MinLength(1, ErrorMessage = " Ingrese Mínimo un Caracter")]
 		public int Id_Suplidor { get; set; }
     
         public virtual AsientosVehiculo AsientosVehiculo { get; set; }
