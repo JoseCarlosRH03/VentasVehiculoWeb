@@ -36,7 +36,8 @@
 
 <br />
 <div class="row  " id="aqui" style="margin:auto">
-    @Html.ActionLink("ruta", "ComprarVehiculo", "Home", new {@class="ruta", @style ="display:none" })
+    @Html.ActionLink("ruta", "ComprarVehiculo", "Home", new { @class = "ruta", @style = "display:none" })
+    @Html.ActionLink("ruta2", "Usuarios", "Home", new { @class = "Usuarios", @style = "display:none" })
     @foreach (var item in Model)
     {
         <!-- Card --> /**/ /**/ /**/
@@ -45,8 +46,8 @@
             <!-- Card image -->
             <div class="view overlay carta">
                 <br />
-                
-                <img class="card-img-top" src="~/Imagenes/@Html.DisplayFor(modelItem => item.Imagenes.RutaImagen)" alt="Card image cap">
+
+                <img class="card-img-top imagen" src="~/Imagenes/@Html.DisplayFor(modelItem => item.Imagenes.RutaImagen)" alt="Card image cap">
                 <a href="#!">
                     <div class="mask rgba-white-slight"></div>
                 </a>
@@ -57,7 +58,7 @@
 
                 <!-- Title -->
 
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Marca.Nombre)<p class="d-inline">&nbsp;@Html.DisplayFor(modelItem => item.Vehiculos.Modelo.Nombre)</p></h5>
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Marca.Nombre)<p>&nbsp;@Html.DisplayFor(modelItem => item.Vehiculos.Modelo.Nombre)</p></h5>
                 <!-- Text -->
                 <p class="card-text d-inline"><strong>Precio:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Precio)</p>
                 <p class="card-text d-inline"><strong>Año:&nbsp;</strong> @Html.DisplayFor(modelItem => item.Vehiculos.Año)</p>
@@ -76,6 +77,9 @@
         <br />
 
     }
+
+
+
 
 
 </div>
